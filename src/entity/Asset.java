@@ -8,6 +8,12 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 
+//add count param -> update count everytime an asset is created
+//remove creditRating
+//remove counterPartyId
+//add assedId to counterParty
+
+
 public class Asset {
     private String assetId;
     private String assetType;
@@ -35,6 +41,21 @@ public class Asset {
         this.maturityBucketId = maturityBucketId;
         this.creditRating = creditRating;
         this.lastUpdated = lastUpdated;
+    }
+
+    //update count
+
+    public int updateCount(String assetId){
+        //find from db for the specific assetId
+        //this.count+=1
+        return 0;//(count)
+    }
+    //add to maturity bucket
+    public Asset addAssetToMaturityBucket(){
+        //find maturity bucket corresponding to maturity date
+        //String bucketId = MaturityBucket.find(maturityDate);
+        //this.maturityBucketId = bucketId;
+        return this;
     }
 
     public String getAssetId() {
