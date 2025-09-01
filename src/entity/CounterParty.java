@@ -5,13 +5,14 @@ import db.CounterPartyDB;
 import enums.CreditRating;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class CounterParty {
 
     private final CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
 
-    private String counterPartyId;
-    private String assetId;
+    private final UUID counterPartyId;
+    private final UUID assetId;
     private String name;
     private String type;
     private CreditRating creditRating;
@@ -20,8 +21,8 @@ public class CounterParty {
     private Date creationDate;
     private Date lastUpdated;
 
-    public CounterParty(String counterPartyId, String assetId, String name, String type, CreditRating creditRating, long phoneNumber, String country, Date creationDate, Date lastUpdated) {
-        this.counterPartyId = counterPartyId;
+    public CounterParty(UUID assetId, String name, String type, CreditRating creditRating, long phoneNumber, String country, Date creationDate, Date lastUpdated) {
+        this.counterPartyId = UUID.randomUUID();
         this.assetId = assetId;
         this.name = name;
         this.type = type;
@@ -39,26 +40,18 @@ public class CounterParty {
         counterPartyDBInstance.addCounterParty(counterParty);
     }
 
-    public int updateCount(String assetId){
+    public int updateCount(UUID assetId){
         AssetDB assetDB = AssetDB.getInstance();
         Asset asset = assetDB.getAsset(assetId);
         return asset.updateCount();
     }
 
-    public String getCounterPartyId() {
+    public UUID getCounterPartyId() {
         return counterPartyId;
     }
 
-    public void setCounterPartyId(String counterPartyId) {
-        this.counterPartyId = counterPartyId;
-    }
-
-    public String getAssetId() {
+    public UUID getAssetId() {
         return assetId;
-    }
-
-    public void setAssetId(String assetId) {
-        this.assetId = assetId;
     }
 
     public String getName() {

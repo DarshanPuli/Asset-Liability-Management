@@ -4,6 +4,7 @@ import entity.Asset;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.UUID;
 
 public class AssetDB {
     private ArrayList<Asset> assets = new ArrayList<Asset>();
@@ -28,7 +29,7 @@ public class AssetDB {
         return assets;
     }
 
-    public Asset getAsset(String assetId){
+    public Asset getAsset(UUID assetId){
         for(Asset asset : assets){
             if(asset.getAssetId().equals(assetId)){
                 return asset;
