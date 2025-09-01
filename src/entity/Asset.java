@@ -1,5 +1,6 @@
 package entity;
 
+import db.AssetDB;
 import enums.CreditRating;
 import enums.RateType;
 
@@ -8,7 +9,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 
+//add count param -> update count everytime an asset is created
+//remove creditRating
+//remove counterPartyId
+//add assedId to counterParty
+
+
 public class Asset {
+    private static AssetDB assetDBInstance = AssetDB.getInstance();
     private String assetId;
     private String assetType;
     private double pricipleAmount;
@@ -17,12 +25,11 @@ public class Asset {
     private Date maturityDate;
     private Optional<Date> repricingDate;
     private Currency currency;
-    private String counterPartyId;
     private String maturityBucketId;
-    private CreditRating creditRating;
     private Date lastUpdated;
+    private int count = 0;
 
-    public Asset(String assetId, String assetType, double pricipleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String counterPartyId, String maturityBucketId, CreditRating creditRating, Date lastUpdated) {
+    public Asset(String assetId, String assetType, double pricipleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId, Date lastUpdated) {
         this.assetId = assetId;
         this.assetType = assetType;
         this.pricipleAmount = pricipleAmount;
@@ -31,10 +38,35 @@ public class Asset {
         this.maturityDate = maturityDate;
         this.repricingDate = repricingDate;
         this.currency = currency;
-        this.counterPartyId = counterPartyId;
         this.maturityBucketId = maturityBucketId;
-        this.creditRating = creditRating;
         this.lastUpdated = lastUpdated;
+
+        addAssetToDB(this);
+    }
+
+    public void addAssetToDB(Asset asset){
+        assetDBInstance.addAsset(asset);
+    }
+
+//    public int updateCount(String assetId){
+//        int count = 0;
+//        Asset asset = assetDBInstance.getAsset(assetId);
+//        asset.count+=1;
+//        //update db
+//        return count;
+//    }
+
+    public int updateCount(){
+        this.count+=1;
+        //update db
+        return this.count;
+    }
+    //add to maturity bucket
+    public Asset addAssetToMaturityBucket(){
+        //find maturity bucket corresponding to maturity date
+        //String bucketId = MaturityBucket.find(maturityDate);
+        //this.maturityBucketId = bucketId;
+        return this;
     }
 
     public String getAssetId() {
@@ -101,28 +133,12 @@ public class Asset {
         this.currency = currency;
     }
 
-    public String getCounterPartyId() {
-        return counterPartyId;
-    }
-
-    public void setCounterPartyId(String counterPartyId) {
-        this.counterPartyId = counterPartyId;
-    }
-
     public String getMaturityBucketId() {
         return maturityBucketId;
     }
 
     public void setMaturityBucketId(String maturityBucketId) {
         this.maturityBucketId = maturityBucketId;
-    }
-
-    public CreditRating getCreditRating() {
-        return creditRating;
-    }
-
-    public void setCreditRating(CreditRating creditRating) {
-        this.creditRating = creditRating;
     }
 
     public Date getLastUpdated() {
