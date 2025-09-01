@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class CounterParty {
 
-    private CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
+    private final CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
 
     private String counterPartyId;
     private String assetId;
