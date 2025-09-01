@@ -6,9 +6,9 @@ public class BucketGap {
 
     private int gapID;
     private int bucketID;
-    private BigDecimal totalAssetsValue;
-    private BigDecimal totalLiabilitiesValue;
-    private BigDecimal netGap;
+    private long totalAssetsValue;
+    private long totalLiabilitiesValue;
+    private long netGap;
     private Date calculationDate;
     private String gapType;
 
@@ -30,27 +30,27 @@ public class BucketGap {
         this.bucketID = bucketID;
     }
 
-    public BigDecimal getTotalAssetsValue() {
+    public long getTotalAssetsValue() {
         return totalAssetsValue;
     }
 
-    public void setTotalAssetsValue(BigDecimal totalAssetsValue) {
+    public void setTotalAssetsValue(long totalAssetsValue) {
         this.totalAssetsValue = totalAssetsValue;
     }
 
-    public BigDecimal getTotalLiabilitiesValue() {
+    public long getTotalLiabilitiesValue() {
         return totalLiabilitiesValue;
     }
 
-    public void setTotalLiabilitiesValue(BigDecimal totalLiabilitiesValue) {
+    public void setTotalLiabilitiesValue(long totalLiabilitiesValue) {
         this.totalLiabilitiesValue = totalLiabilitiesValue;
     }
 
-    public BigDecimal getNetGap() {
+    public long getNetGap() {
         return netGap;
     }
 
-    public void setNetGap(BigDecimal netGap) {
+    public void setNetGap(long netGap) {
         this.netGap = netGap;
     }
 
