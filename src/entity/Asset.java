@@ -40,17 +40,25 @@ public class Asset {
         this.currency = currency;
         this.maturityBucketId = maturityBucketId;
         this.lastUpdated = lastUpdated;
+
+        addAssetToDB(this);
     }
 
-    public int updateCount(String assetId){
-        int count = 0;
-        Asset asset = assetDBInstance.getAsset(assetId);
-        asset.count+=1;
-        return count;
+    public void addAssetToDB(Asset asset){
+        assetDBInstance.addAsset(asset);
     }
+
+//    public int updateCount(String assetId){
+//        int count = 0;
+//        Asset asset = assetDBInstance.getAsset(assetId);
+//        asset.count+=1;
+//        //update db
+//        return count;
+//    }
 
     public int updateCount(){
         this.count+=1;
+        //update db
         return this.count;
     }
     //add to maturity bucket

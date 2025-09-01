@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CounterPartyDB {
 
-    ArrayList<CounterParty> assets = new ArrayList<CounterParty>();
+    ArrayList<CounterParty> counterParties = new ArrayList<CounterParty>();
 
     CounterPartyDB(){};
 
@@ -15,6 +15,10 @@ public class CounterPartyDB {
 
     public static CounterPartyDB getInstance(){
         return CounterPartyDB.instance!=null?CounterPartyDB.instance:new CounterPartyDB();
+    }
+
+    public void addCounterParty(CounterParty counterParty){
+        counterParties.add(counterParty);
     }
 
 }

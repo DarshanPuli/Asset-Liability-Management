@@ -1,11 +1,15 @@
 package entity;
 
 import db.AssetDB;
+import db.CounterPartyDB;
 import enums.CreditRating;
 
 import java.util.Date;
 
 public class CounterParty {
+
+    private CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
+
     private String counterPartyId;
     private String assetId;
     private String name;
@@ -27,7 +31,12 @@ public class CounterParty {
         this.creationDate = creationDate;
         this.lastUpdated = lastUpdated;
 
+        addCounterPartyToDB(this);
         updateCount(this.assetId);
+    }
+
+    public void addCounterPartyToDB(CounterParty counterParty){
+        counterPartyDBInstance.addCounterParty(counterParty);
     }
 
     public int updateCount(String assetId){
