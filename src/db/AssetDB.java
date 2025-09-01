@@ -7,12 +7,12 @@ import java.util.Objects;
 
 public class AssetDB {
     private ArrayList<Asset> assets = new ArrayList<Asset>();
-    private AssetDB instance= null;
+    private static AssetDB instance= null;
 
     private AssetDB(){}
 
-    public AssetDB getInstance(){
-        return this.instance!=null?this.instance:new AssetDB();
+    public static AssetDB getInstance(){
+        return AssetDB.instance!=null?AssetDB.instance:new AssetDB();
     }
 
     public void addAsset(Asset asset){
