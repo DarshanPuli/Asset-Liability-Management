@@ -12,7 +12,12 @@ public class AssetDB {
     private AssetDB(){}
 
     public static AssetDB getInstance(){
-        return AssetDB.instance!=null?AssetDB.instance:new AssetDB();
+        if(instance==null){
+            instance = new AssetDB();
+            return instance;
+        }else{
+            return instance;
+        }
     }
 
     public void addAsset(Asset asset){

@@ -14,7 +14,12 @@ public class CounterPartyDB {
     private static CounterPartyDB instance;
 
     public static CounterPartyDB getInstance(){
-        return CounterPartyDB.instance!=null?CounterPartyDB.instance:new CounterPartyDB();
+        if(instance==null){
+            instance = new CounterPartyDB();
+            return  instance;
+        }else{
+            return instance;
+        }
     }
 
     public void addCounterParty(CounterParty counterParty){
