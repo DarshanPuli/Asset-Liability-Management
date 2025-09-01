@@ -1,8 +1,8 @@
-package entity;
+package org.example.entity;
 
-import db.AssetDB;
-import db.CounterPartyDB;
-import enums.CreditRating;
+import org.example.db.AssetDB;
+import org.example.db.CounterPartyDB;
+import org.example.enums.CreditRating;
 
 import java.util.Date;
 import java.util.UUID;

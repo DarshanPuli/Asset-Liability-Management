@@ -1,6 +1,6 @@
-package db;
+package org.example.db;
 
-import entity.Asset;
+import org.example.entity.Asset;
 
 import java.util.ArrayList;
 import java.util.Objects;

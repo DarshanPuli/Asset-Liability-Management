@@ -1,8 +1,8 @@
-package entity;
+package org.example.entity;
 
-import db.AssetDB;
-import enums.CreditRating;
-import enums.RateType;
+import org.example.db.AssetDB;
+import org.example.enums.CreditRating;
+import org.example.enums.RateType;
 
 import java.util.*;
 
