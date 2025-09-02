@@ -1,7 +1,7 @@
-package db;
+package org.example.db;
 
-import entity.Asset;
-import entity.CounterParty;
+import org.example.entity.Asset;
+import org.example.entity.CounterParty;
 
 import java.util.ArrayList;
 

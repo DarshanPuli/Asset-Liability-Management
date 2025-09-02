@@ -1,6 +1,8 @@
+package org.example;
+
 import java.util.Scanner;
 
-public class Main {
+public class App {
 
     private static void printMainMenu() {
         System.out.println("Welcome to the Asset Liability Management System");
@@ -134,9 +136,9 @@ public class Main {
                 case 7: viewLiquidityPosition(); break;
                 case 8: generateReports(); break;
                 case 9: System.out.println("Exiting System! Bye!");
-                        running = false;
-                        break;
-                        default: System.out.println("Invalid choice!");
+                    running = false;
+                    break;
+                default: System.out.println("Invalid choice!");
             }
             System.out.println();
         }

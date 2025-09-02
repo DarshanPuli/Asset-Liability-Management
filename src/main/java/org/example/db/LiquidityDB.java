@@ -1,4 +1,4 @@
-package db;
+ackage db;
 
 import entity.Liquidity;
 
