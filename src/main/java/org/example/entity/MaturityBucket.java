@@ -1,9 +1,10 @@
-package Entity;
+package org.example.entity;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class MaturityBucket {
 
-    private int bucketID;
+    private UUID bucketID;
     private String bucketName;
     private int startRange;
     private int endRange;
@@ -13,11 +14,11 @@ public class MaturityBucket {
 
     // Getters and Setters
 
-    public int getBucketID() {
+    public UUID getBucketID() {
         return bucketID;
     }
 
-    public void setBucketID(int bucketID) {
+    public void setBucketID(UUID bucketID) {
         this.bucketID = bucketID;
     }
 

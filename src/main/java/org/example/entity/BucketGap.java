@@ -1,56 +1,56 @@
-package Entity;
-import java.math.BigDecimal;
+package org.example.entity;
 import java.sql.Date;
+import java.util.UUID;
 
 public class BucketGap {
 
-    private int gapID;
-    private int bucketID;
-    private long totalAssetsValue;
-    private long totalLiabilitiesValue;
-    private long netGap;
+    private UUID gapID;
+    private UUID bucketID;
+    private float totalAssetsValue;
+    private float totalLiabilitiesValue;
+    private float netGap;
     private Date calculationDate;
     private String gapType;
 
     // Getters and Setters
 
-    public int getGapID() {
+    public UUID getGapID() {
         return gapID;
     }
 
-    public void setGapID(int gapID) {
+    public void setGapID(UUID gapID) {
         this.gapID = gapID;
     }
 
-    public int getBucketID() {
+    public UUID getBucketID() {
         return bucketID;
     }
 
-    public void setBucketID(int bucketID) {
+    public void setBucketID(UUID bucketID) {
         this.bucketID = bucketID;
     }
 
-    public long getTotalAssetsValue() {
+    public float getTotalAssetsValue() {
         return totalAssetsValue;
     }
 
-    public void setTotalAssetsValue(long totalAssetsValue) {
+    public void setTotalAssetsValue(float totalAssetsValue) {
         this.totalAssetsValue = totalAssetsValue;
     }
 
-    public long getTotalLiabilitiesValue() {
+    public float getTotalLiabilitiesValue() {
         return totalLiabilitiesValue;
     }
 
-    public void setTotalLiabilitiesValue(long totalLiabilitiesValue) {
+    public void setTotalLiabilitiesValue(float totalLiabilitiesValue) {
         this.totalLiabilitiesValue = totalLiabilitiesValue;
     }
 
-    public long getNetGap() {
+    public float getNetGap() {
         return netGap;
     }
 
-    public void setNetGap(long netGap) {
+    public void setNetGap(float netGap) {
         this.netGap = netGap;
     }
 
