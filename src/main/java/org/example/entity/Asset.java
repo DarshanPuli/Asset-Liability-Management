@@ -13,7 +13,7 @@ import java.util.*;
 
 
 public class Asset {
-    private static AssetDB assetDBInstance = AssetDB.getInstance();
+//    private static AssetDB assetDBInstance = AssetDB.getInstance();
     private final UUID assetId;
     private String assetType;
     private double principalAmount;
@@ -37,13 +37,11 @@ public class Asset {
         this.currency = currency;
         this.maturityBucketId = maturityBucketId;
         this.lastUpdated = lastUpdated;
-
-        addAssetToDB(this);
     }
 
-    public void addAssetToDB(Asset asset){
-        assetDBInstance.addAsset(asset);
-    }
+//    public void addAssetToDB(Asset asset){
+//        assetDBInstance.addAsset(asset);
+//    }
 
 //    public int updateCount(String assetId){
 //        int count = 0;
@@ -53,19 +51,19 @@ public class Asset {
 //        return count;
 //    }
 
-    public int updateCount(){
-        this.count+=1;
-        //update db
-        return this.count;
-    }
+//    public int updateCount(){
+//        this.count+=1;
+//        //update db
+//        return this.count;
+//    }
 
     //add to maturity bucket
-    public Asset addAssetToMaturityBucket(){
-        //find maturity bucket corresponding to maturity date
-        //String bucketId = MaturityBucket.find(maturityDate);
-        //this.maturityBucketId = bucketId;
-        return this;
-    }
+//    public Asset addAssetToMaturityBucket(){
+//        //find maturity bucket corresponding to maturity date
+//        //String bucketId = MaturityBucket.find(maturityDate);
+//        //this.maturityBucketId = bucketId;
+//        return this;
+//    }
 
     public UUID getAssetId() {
         return assetId;
