@@ -15,7 +15,7 @@ public class MaturityBucketDaoImplementation implements MaturityBucketDao {
     public MaturityBucketDaoImplementation() throws SQLException {
     }
 
-    public void addMaturityBucket(MaturityBucket maturityBucket) throws SQLException {
+    public void updateMaturityBucket(MaturityBucket maturityBucket) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_MATURITY_BUCKET);
         preparedStatement.setDouble(1,maturityBucket.getTotalAssetsValue());
         preparedStatement.setDouble(2,maturityBucket.getNetGap());

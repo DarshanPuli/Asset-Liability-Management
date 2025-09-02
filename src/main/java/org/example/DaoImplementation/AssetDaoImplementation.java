@@ -20,6 +20,7 @@ public class AssetDaoImplementation implements AssetDao {
     private final String ADD_ASSET = "INSERT INTO assets (asset_id, asset_type, principal_amount, interest_rate, rate_type, maturity_date, repricing_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String GET_MATURTY_DATE = "SELECT maturity_date FROM assets WHERE asset_id = ?";
     private final String GET_ASSET = "SELECT * FROM assets WHERE asset_id = ?";
+
     public AssetDaoImplementation() throws SQLException {
     }
 

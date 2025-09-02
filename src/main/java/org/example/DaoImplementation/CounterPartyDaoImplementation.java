@@ -49,6 +49,7 @@ public class CounterPartyDaoImplementation implements CounterPartyDao {
         bucket.setNetGap(bucket.getNetGap()+asset.getprincipalAmount());
 
         //update maturity bucket in db
+        maturityBucketDaoImplementation.updateMaturityBucket(bucket);
     }
 
     @Override
