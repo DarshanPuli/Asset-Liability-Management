@@ -11,7 +11,6 @@ import java.util.*;
 //remove counterPartyId
 //add assedId to counterParty
 
-
 public class Asset {
 //    private static AssetDB assetDBInstance = AssetDB.getInstance();
     private final UUID assetId;
