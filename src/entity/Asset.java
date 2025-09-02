@@ -60,6 +60,7 @@ public class Asset {
         //update db
         return this.count;
     }
+
     //add to maturity bucket
     public Asset addAssetToMaturityBucket(){
         //find maturity bucket corresponding to maturity date
