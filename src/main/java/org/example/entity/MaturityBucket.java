@@ -1,4 +1,5 @@
 package org.example.entity;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -9,10 +10,14 @@ public class MaturityBucket {
     private int startRange;
     private int endRange;
     private String description;
+    private double totalAssetsValue;
+    private double totalLiabilitiesValue;
+    private double netGap;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public MaturityBucket(){}
+    public MaturityBucket() {
+    }
 
     public MaturityBucket(String bucketName, int startRange, int endRange, String description) {
         this.bucketID = UUID.randomUUID();
@@ -20,6 +25,9 @@ public class MaturityBucket {
         this.startRange = startRange;
         this.endRange = endRange;
         this.description = description;
+        this.totalAssetsValue = totalAssetsValue;
+        this.totalLiabilitiesValue = totalLiabilitiesValue;
+        this.netGap = netGap;
     }
 
     public UUID getBucketID() {
@@ -56,6 +64,30 @@ public class MaturityBucket {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getTotalAssetsValue() {
+        return totalAssetsValue;
+    }
+
+    public void setTotalAssetsValue(double totalAssetsValue) {
+        this.totalAssetsValue = totalAssetsValue;
+    }
+
+    public double getTotalLiabilitiesValue() {
+        return totalLiabilitiesValue;
+    }
+
+    public void setTotalLiabilitiesValue(double totalLiabilitiesValue) {
+        this.totalLiabilitiesValue = totalLiabilitiesValue;
+    }
+
+    public double getNetGap() {
+        return netGap;
+    }
+
+    public void setNetGap(double netGap) {
+        this.netGap = netGap;
     }
 
     public Timestamp getCreatedAt() {

@@ -2,6 +2,7 @@ package org.example.entity;
 import org.example.enums.RateType;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Asset {
@@ -9,17 +10,16 @@ public class Asset {
     private String assetType;
     private double principalAmount;
     private double interestRate;
-    private RateType rateType;
-    private Date maturityDate;
-    private Optional<Date> repricingDate;
-    private Currency currency;
+    private String rateType;
+    private LocalDate maturityDate;
+    private LocalDate repricingDate;
     private String maturityBucketId;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId) {
+    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency, String maturityBucketId) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
         this.principalAmount = principalAmount;
@@ -27,8 +27,11 @@ public class Asset {
         this.rateType = rateType;
         this.maturityDate = maturityDate;
         this.repricingDate = repricingDate;
-        this.currency = currency;
         this.maturityBucketId = maturityBucketId;
+    }
+
+    public Asset() {
+        this.assetId = UUID.randomUUID();
     }
 
 
@@ -64,36 +67,28 @@ public class Asset {
         this.interestRate = interestRate;
     }
 
-    public RateType getRateType() {
+    public String getRateType() {
         return rateType;
     }
 
-    public void setRateType(RateType rateType) {
+    public void setRateType(String rateType) {
         this.rateType = rateType;
     }
 
-    public Date getMaturityDate() {
+    public LocalDate getMaturityDate() {
         return maturityDate;
     }
 
-    public void setMaturityDate(Date maturityDate) {
+    public void setMaturityDate(LocalDate maturityDate) {
         this.maturityDate = maturityDate;
     }
 
-    public Optional<Date> getRepricingDate() {
+    public LocalDate getRepricingDate() {
         return repricingDate;
     }
 
-    public void setRepricingDate(Optional<Date> repricingDate) {
+    public void setRepricingDate(LocalDate repricingDate) {
         this.repricingDate = repricingDate;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
     }
 
     public String getMaturityBucketId() {
