@@ -1,15 +1,10 @@
 package org.example.entity;
-
-import org.example.db.AssetDB;
-import org.example.db.CounterPartyDB;
 import org.example.enums.CreditRating;
 
 import java.util.Date;
 import java.util.UUID;
 
 public class CounterParty {
-
-    private final CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
 
     private final UUID counterPartyId;
     private final UUID assetId;
@@ -31,19 +26,6 @@ public class CounterParty {
         this.country = country;
         this.creationDate = creationDate;
         this.lastUpdated = lastUpdated;
-
-        addCounterPartyToDB(this);
-        updateCount(this.assetId);
-    }
-
-    public void addCounterPartyToDB(CounterParty counterParty){
-        counterPartyDBInstance.addCounterParty(counterParty);
-    }
-
-    public int updateCount(UUID assetId){
-        AssetDB assetDB = AssetDB.getInstance();
-        Asset asset = assetDB.getAsset(assetId);
-        return asset.updateCount();
     }
 
     public UUID getCounterPartyId() {

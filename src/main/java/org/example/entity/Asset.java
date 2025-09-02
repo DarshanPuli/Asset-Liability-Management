@@ -1,18 +1,9 @@
 package org.example.entity;
-
-import org.example.db.AssetDB;
-import org.example.enums.CreditRating;
 import org.example.enums.RateType;
 
 import java.util.*;
 
-//add count param -> update count everytime an asset is created
-//remove creditRating
-//remove counterPartyId
-//add assedId to counterParty
-
 public class Asset {
-//    private static AssetDB assetDBInstance = AssetDB.getInstance();
     private final UUID assetId;
     private String assetType;
     private double principalAmount;
@@ -37,32 +28,6 @@ public class Asset {
         this.maturityBucketId = maturityBucketId;
         this.lastUpdated = lastUpdated;
     }
-
-//    public void addAssetToDB(Asset asset){
-//        assetDBInstance.addAsset(asset);
-//    }
-
-//    public int updateCount(String assetId){
-//        int count = 0;
-//        Asset asset = assetDBInstance.getAsset(assetId);
-//        asset.count+=1;
-//        //update db
-//        return count;
-//    }
-
-//    public int updateCount(){
-//        this.count+=1;
-//        //update db
-//        return this.count;
-//    }
-
-    //add to maturity bucket
-//    public Asset addAssetToMaturityBucket(){
-//        //find maturity bucket corresponding to maturity date
-//        //String bucketId = MaturityBucket.find(maturityDate);
-//        //this.maturityBucketId = bucketId;
-//        return this;
-//    }
 
     public UUID getAssetId() {
         return assetId;

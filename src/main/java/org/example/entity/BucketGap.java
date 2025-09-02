@@ -12,8 +12,6 @@ public class BucketGap {
     private Date calculationDate;
     private String gapType;
 
-    // Getters and Setters
-
     public UUID getGapID() {
         return gapID;
     }

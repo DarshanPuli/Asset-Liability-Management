@@ -1,10 +1,9 @@
-package entity;
+package org.example.entity;
 
 import java.util.UUID;
 
-import db.LiabilityDB;
-import enums.CreditRating;
-import enums.RateType;
+import org.example.enums.RateType;
+
 
 import java.util.Currency;
 import java.util.Date;
