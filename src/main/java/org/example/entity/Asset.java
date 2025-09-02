@@ -1,13 +1,10 @@
-package entity;
+package org.example.entity;
 
-import db.AssetDB;
-import enums.CreditRating;
-import enums.RateType;
+import org.example.db.AssetDB;
+import org.example.enums.CreditRating;
+import org.example.enums.RateType;
 
-import java.util.Currency;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 //add count param -> update count everytime an asset is created
 //remove creditRating
@@ -16,9 +13,9 @@ import java.util.Optional;
 
 public class Asset {
     private static AssetDB assetDBInstance = AssetDB.getInstance();
-    private String assetId;
+    private final UUID assetId;
     private String assetType;
-    private double pricipleAmount;
+    private double principalAmount;
     private double interestRate;
     private RateType rateType;
     private Date maturityDate;
@@ -28,10 +25,10 @@ public class Asset {
     private Date lastUpdated;
     private int count = 0;
 
-    public Asset(String assetId, String assetType, double pricipleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId, Date lastUpdated) {
-        this.assetId = assetId;
+    public Asset(String assetType, double principalAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId, Date lastUpdated) {
+        this.assetId = UUID.randomUUID();
         this.assetType = assetType;
-        this.pricipleAmount = pricipleAmount;
+        this.principalAmount = principalAmount;
         this.interestRate = interestRate;
         this.rateType = rateType;
         this.maturityDate = maturityDate;
@@ -69,12 +66,8 @@ public class Asset {
         return this;
     }
 
-    public String getAssetId() {
+    public UUID getAssetId() {
         return assetId;
-    }
-
-    public void setAssetId(String assetId) {
-        this.assetId = assetId;
     }
 
     public String getAssetType() {
@@ -85,12 +78,12 @@ public class Asset {
         this.assetType = assetType;
     }
 
-    public double getPricipleAmount() {
-        return pricipleAmount;
+    public double getprincipalAmount() {
+        return principalAmount;
     }
 
-    public void setPricipleAmount(double pricipleAmount) {
-        this.pricipleAmount = pricipleAmount;
+    public void setprincipalAmount(double principalAmount) {
+        this.principalAmount = principalAmount;
     }
 
     public double getInterestRate() {
