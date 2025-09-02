@@ -52,8 +52,6 @@ public class Liability {
         this.currency = currency;
         this.counterPartyId= counterPartyId;
         this.maturityBucketId = maturityBucketId;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
 
         //addLiabilitytoDB(this);
     }
@@ -157,9 +155,5 @@ public class Liability {
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

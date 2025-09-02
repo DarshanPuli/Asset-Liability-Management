@@ -25,8 +25,6 @@ public class CounterParty {
         this.creditRating = creditRating;
         this.phoneNumber = phoneNumber;
         this.country = country;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
     public UUID getCounterPartyId() {
@@ -85,7 +83,4 @@ public class CounterParty {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }
