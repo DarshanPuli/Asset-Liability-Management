@@ -1,8 +1,6 @@
-package entity;
+package org.example.entity;
 
-
-
-import db.LiquidityDB;
+import org.example.db.LiquidityDB;
 
 import java.util.Date;
 
