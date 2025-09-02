@@ -1,8 +1,7 @@
 package org.example;
 
-import org.example.connection.OracleDbConnection;
+import org.example.util.DBSetup;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -123,9 +122,10 @@ public class App {
     }
 
     public static void main(String[] args) throws SQLException {
-        Connection conn = OracleDbConnection.getConnection();
         Scanner sc = new Scanner(System.in);
         boolean running = true;
+
+        DBSetup.initializeConnectionAndSchema();
 
         while(running) {
             printMainMenu();
