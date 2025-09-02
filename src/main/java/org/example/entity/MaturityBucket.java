@@ -20,8 +20,6 @@ public class MaturityBucket {
         this.startRange = startRange;
         this.endRange = endRange;
         this.description = description;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
     public UUID getBucketID() {
@@ -60,16 +58,12 @@ public class MaturityBucket {
         this.description = description;
     }
 
-    public Timestamp getCreationDate() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public Timestamp getLastUpdated() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setLastUpdated(Timestamp lastUpdated) {
-        this.updatedAt = lastUpdated;
     }
 }
 

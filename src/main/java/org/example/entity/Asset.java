@@ -29,8 +29,6 @@ public class Asset {
         this.repricingDate = repricingDate;
         this.currency = currency;
         this.maturityBucketId = maturityBucketId;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
 
@@ -112,9 +110,5 @@ public class Asset {
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

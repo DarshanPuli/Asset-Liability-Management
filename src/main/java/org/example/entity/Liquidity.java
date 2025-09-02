@@ -34,10 +34,7 @@ public class Liquidity {
         this.bucketId = bucketId;
         this.scenarioId = scenarioId;
         this.description = description;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
-
 
     public UUID getLiquidityId() { return liquidityId; }
 
@@ -82,7 +79,4 @@ public class Liquidity {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

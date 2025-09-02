@@ -25,8 +25,6 @@ public class BucketGap {
         this.netGap = netGap;
         this.calculationDate = calculationDate;
         this.gapType = gapType;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
     public UUID getGapID() {
@@ -85,8 +83,5 @@ public class BucketGap {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }
 

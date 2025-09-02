@@ -1,0 +1,13 @@
+DROP TRIGGER update_liquidity_timestamp;
+DROP TRIGGER update_bucketgap_timestamp;
+DROP TRIGGER update_asset_timestamp;
+DROP TRIGGER update_liability_timestamp;
+DROP TRIGGER update_maturitybucket_timestamp;
+DROP TRIGGER update_counterparty_timestamp;
+
+DROP TABLE Liquidity CASCADE CONSTRAINTS;
+DROP TABLE BucketGap CASCADE CONSTRAINTS;
+DROP TABLE Asset CASCADE CONSTRAINTS;
+DROP TABLE Liability CASCADE CONSTRAINTS;
+DROP TABLE MaturityBucket CASCADE CONSTRAINTS;
+DROP TABLE CounterParty CASCADE CONSTRAINTS;
