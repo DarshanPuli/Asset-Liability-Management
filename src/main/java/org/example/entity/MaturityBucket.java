@@ -12,8 +12,6 @@ public class MaturityBucket {
     private Timestamp creationDate;
     private Timestamp lastUpdated;
 
-    // Getters and Setters
-
     public UUID getBucketID() {
         return bucketID;
     }
