@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.connection.OracleDbConnection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class App {
@@ -118,7 +122,8 @@ public class App {
         System.out.println("Generating Reports - Not yet implemented.");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        Connection conn = OracleDbConnection.getConnection();
         Scanner sc = new Scanner(System.in);
         boolean running = true;
 
