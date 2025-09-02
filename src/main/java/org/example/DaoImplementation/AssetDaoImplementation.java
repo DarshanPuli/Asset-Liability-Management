@@ -29,7 +29,7 @@ public class AssetDaoImplementation implements AssetDao {
         PreparedStatement statement = connection.prepareStatement(ADD_ASSET);
         statement.setObject(1, asset.getAssetId());
         statement.setString(2, asset.getAssetType());
-        statement.setDouble(3, asset.getprincipalAmount());
+        statement.setDouble(3, asset.getPrincipalAmount());
         statement.setDouble(4, asset.getInterestRate());
         statement.setString(5, asset.getRateType());
         statement.setDate(6, java.sql.Date.valueOf(asset.getMaturityDate()));
@@ -65,7 +65,7 @@ public class AssetDaoImplementation implements AssetDao {
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
             Asset asset = new Asset();
-            asset.setprincipalAmount(resultSet.getDouble("principal_amount"));
+            asset.setPrincipalAmount(resultSet.getDouble("principal_amount"));
             asset.setInterestRate(resultSet.getDouble("interest_rate"));
             asset.setRateType(resultSet.getString("rate_type"));
             asset.setMaturityDate(resultSet.getObject("maturity_date", LocalDate.class));

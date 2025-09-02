@@ -15,13 +15,13 @@ public class Liquidity {
     private double quickRatio;
     private double totalLiquidAssets;
     private double totalShortTermLiabilities;
-    private String bucketId;
+    private UUID bucketId;
     private String scenarioId;
     private String description;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public Liquidity(Date assessmentDate, double cashFlowNet, double cashReserve, double avgInterest, double currentRatio, double quickRatio,  double totalLiquidAssets, double totalShortTermLiabilities,  String bucketId, String scenarioId, String description) {
+    public Liquidity(Date assessmentDate, double cashFlowNet, double cashReserve, double avgInterest, double currentRatio, double quickRatio,  double totalLiquidAssets, double totalShortTermLiabilities,  UUID bucketId, String scenarioId, String description) {
         this.liquidityId = UUID.randomUUID();
         this.assessmentDate = assessmentDate;
         this.cashFlowNet = cashFlowNet;
@@ -31,7 +31,7 @@ public class Liquidity {
         this.quickRatio = quickRatio;
         this.totalLiquidAssets = totalLiquidAssets;
         this.totalShortTermLiabilities = totalShortTermLiabilities;
-        this.bucketId = bucketId;
+        this.bucketId = bucketId;  // check
         this.scenarioId = scenarioId;
         this.description = description;
     }
@@ -62,8 +62,7 @@ public class Liquidity {
     public double getTotalShortTermLiabilities() { return totalShortTermLiabilities; }
     public void setTotalShortTermLiabilities(double totalShortTermLiabilities) { this.totalShortTermLiabilities = totalShortTermLiabilities; }
 
-    public String getBucketId() { return bucketId; }
-    public void setBucketId(String bucketId) { this.bucketId = bucketId; }
+    public UUID getBucketId() { return bucketId; }
 
     public String getScenarioId() { return scenarioId; }
     public void setScenarioId(String scenarioId) { this.scenarioId = scenarioId; }

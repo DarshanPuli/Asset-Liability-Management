@@ -13,13 +13,13 @@ public class Asset {
     private String rateType;
     private LocalDate maturityDate;
     private LocalDate repricingDate;
-    private String maturityBucketId;
+    private UUID maturityBucketId;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency, String maturityBucketId) {
+    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency, UUID maturityBucketId) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
         this.principalAmount = principalAmount;
@@ -27,6 +27,7 @@ public class Asset {
         this.rateType = rateType;
         this.maturityDate = maturityDate;
         this.repricingDate = repricingDate;
+        // check the below one
         this.maturityBucketId = maturityBucketId;
     }
 
@@ -51,11 +52,11 @@ public class Asset {
         this.assetType = assetType;
     }
 
-    public double getprincipalAmount() {
+    public double getPrincipalAmount() {
         return principalAmount;
     }
 
-    public void setprincipalAmount(double principalAmount) {
+    public void setPrincipalAmount(double principalAmount) {
         this.principalAmount = principalAmount;
     }
 
@@ -91,12 +92,8 @@ public class Asset {
         this.repricingDate = repricingDate;
     }
 
-    public String getMaturityBucketId() {
+    public UUID getMaturityBucketId() {
         return maturityBucketId;
-    }
-
-    public void setMaturityBucketId(String maturityBucketId) {
-        this.maturityBucketId = maturityBucketId;
     }
 
     public Timestamp getCreatedAt() {

@@ -37,15 +37,6 @@ public class TableTriggers {
         END;
         """;
 
-    public static final String TRIGGER_BUCKET_GAP = """
-        CREATE OR REPLACE TRIGGER update_bucketgap_timestamp
-        BEFORE UPDATE ON BucketGap
-        FOR EACH ROW
-        BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
-        END;
-        """;
-
     public static final String TRIGGER_LIQUIDITY = """
         CREATE OR REPLACE TRIGGER update_liquidity_timestamp
         BEFORE UPDATE ON Liquidity

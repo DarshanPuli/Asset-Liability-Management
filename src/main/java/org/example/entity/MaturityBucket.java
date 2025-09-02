@@ -16,8 +16,7 @@ public class MaturityBucket {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public MaturityBucket() {
-    }
+    public MaturityBucket() {}
 
     public MaturityBucket(String bucketName, int startRange, int endRange, String description) {
         this.bucketID = UUID.randomUUID();
@@ -32,6 +31,10 @@ public class MaturityBucket {
 
     public UUID getBucketID() {
         return bucketID;
+    }
+
+    public void setBucketID(UUID bucketID) {
+        this.bucketID = bucketID;
     }
 
     public String getBucketName() {

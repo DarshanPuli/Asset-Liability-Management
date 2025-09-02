@@ -45,8 +45,8 @@ public class CounterPartyDaoImplementation implements CounterPartyDao {
         MaturityBucket bucket = maturityBucketDaoImplementation.findMaturityBucket(monthsLeftToMaturity);
 
         //update maturity bucket object
-        bucket.setTotalAssetsValue(bucket.getTotalAssetsValue()+asset.getprincipalAmount());
-        bucket.setNetGap(bucket.getNetGap()+asset.getprincipalAmount());
+        bucket.setTotalAssetsValue(bucket.getTotalAssetsValue()+asset.getPrincipalAmount());
+        bucket.setNetGap(bucket.getNetGap()+asset.getPrincipalAmount());
 
         //update maturity bucket in db
         maturityBucketDaoImplementation.updateMaturityBucket(bucket);
