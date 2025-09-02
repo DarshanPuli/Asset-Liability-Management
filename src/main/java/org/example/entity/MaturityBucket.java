@@ -9,15 +9,23 @@ public class MaturityBucket {
     private int startRange;
     private int endRange;
     private String description;
-    private Timestamp creationDate;
-    private Timestamp lastUpdated;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    public MaturityBucket(){}
+
+    public MaturityBucket(String bucketName, int startRange, int endRange, String description) {
+        this.bucketID = UUID.randomUUID();
+        this.bucketName = bucketName;
+        this.startRange = startRange;
+        this.endRange = endRange;
+        this.description = description;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 
     public UUID getBucketID() {
         return bucketID;
-    }
-
-    public void setBucketID(UUID bucketID) {
-        this.bucketID = bucketID;
     }
 
     public String getBucketName() {
@@ -53,19 +61,15 @@ public class MaturityBucket {
     }
 
     public Timestamp getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Timestamp creationDate) {
-        this.creationDate = creationDate;
+        return createdAt;
     }
 
     public Timestamp getLastUpdated() {
-        return lastUpdated;
+        return updatedAt;
     }
 
     public void setLastUpdated(Timestamp lastUpdated) {
-        this.lastUpdated = lastUpdated;
+        this.updatedAt = lastUpdated;
     }
 }
 

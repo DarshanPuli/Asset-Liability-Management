@@ -1,61 +1,45 @@
 package org.example.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.UUID;
 
 public class Liquidity {
 
-    private String liquidityId;
+    private UUID liquidityId;
     private Date assessmentDate;
     private double cashFlowNet;
     private double cashReserve;
     private double avgInterest;
     private double currentRatio;
     private double quickRatio;
-    private double liquidityCoverageRatio;
-    private double netStableFundingRatio;
     private double totalLiquidAssets;
     private double totalShortTermLiabilities;
-    private double liquidityGapShortTerm;
     private String bucketId;
     private String scenarioId;
     private String description;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public Liquidity(String liquidityId,
-                     Date assessmentDate,
-                     double cashFlowNet,
-                     double cashReserve,
-                     double avgInterest,
-                     double currentRatio,
-                     double quickRatio,
-                     double liquidityCoverageRatio,
-                     double netStableFundingRatio,
-                     double totalLiquidAssets,
-                     double totalShortTermLiabilities,
-                     double liquidityGapShortTerm,
-                     String bucketId,
-                     String scenarioId,
-                     String description) {
-
-        this.liquidityId = liquidityId;
+    public Liquidity(Date assessmentDate, double cashFlowNet, double cashReserve, double avgInterest, double currentRatio, double quickRatio,  double totalLiquidAssets, double totalShortTermLiabilities,  String bucketId, String scenarioId, String description) {
+        this.liquidityId = UUID.randomUUID();
         this.assessmentDate = assessmentDate;
         this.cashFlowNet = cashFlowNet;
         this.cashReserve = cashReserve;
         this.avgInterest = avgInterest;
         this.currentRatio = currentRatio;
         this.quickRatio = quickRatio;
-        this.liquidityCoverageRatio = liquidityCoverageRatio;
-        this.netStableFundingRatio = netStableFundingRatio;
         this.totalLiquidAssets = totalLiquidAssets;
         this.totalShortTermLiabilities = totalShortTermLiabilities;
-        this.liquidityGapShortTerm = liquidityGapShortTerm;
         this.bucketId = bucketId;
         this.scenarioId = scenarioId;
         this.description = description;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
 
-    public String getLiquidityId() { return liquidityId; }
-    public void setLiquidityId(String liquidityId) { this.liquidityId = liquidityId; }
+    public UUID getLiquidityId() { return liquidityId; }
 
     public Date getAssessmentDate() { return assessmentDate; }
     public void setAssessmentDate(Date assessmentDate) { this.assessmentDate = assessmentDate; }
@@ -75,20 +59,11 @@ public class Liquidity {
     public double getQuickRatio() { return quickRatio; }
     public void setQuickRatio(double quickRatio) { this.quickRatio = quickRatio; }
 
-    public double getLiquidityCoverageRatio() { return liquidityCoverageRatio; }
-    public void setLiquidityCoverageRatio(double liquidityCoverageRatio) { this.liquidityCoverageRatio = liquidityCoverageRatio; }
-
-    public double getNetStableFundingRatio() { return netStableFundingRatio; }
-    public void setNetStableFundingRatio(double netStableFundingRatio) { this.netStableFundingRatio = netStableFundingRatio; }
-
     public double getTotalLiquidAssets() { return totalLiquidAssets; }
     public void setTotalLiquidAssets(double totalLiquidAssets) { this.totalLiquidAssets = totalLiquidAssets; }
 
     public double getTotalShortTermLiabilities() { return totalShortTermLiabilities; }
     public void setTotalShortTermLiabilities(double totalShortTermLiabilities) { this.totalShortTermLiabilities = totalShortTermLiabilities; }
-
-    public double getLiquidityGapShortTerm() { return liquidityGapShortTerm; }
-    public void setLiquidityGapShortTerm(double liquidityGapShortTerm) { this.liquidityGapShortTerm = liquidityGapShortTerm; }
 
     public String getBucketId() { return bucketId; }
     public void setBucketId(String bucketId) { this.bucketId = bucketId; }
@@ -98,5 +73,16 @@ public class Liquidity {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-}
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+}

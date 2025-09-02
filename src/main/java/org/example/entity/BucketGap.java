@@ -1,5 +1,6 @@
 package org.example.entity;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class BucketGap {
@@ -11,21 +12,29 @@ public class BucketGap {
     private float netGap;
     private Date calculationDate;
     private String gapType;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    public BucketGap() {}
+
+    public BucketGap(float totalAssetsValue, float totalLiabilitiesValue, float netGap, Date calculationDate, String gapType) {
+        this.gapID = UUID.randomUUID();
+        this.bucketID = UUID.randomUUID();
+        this.totalAssetsValue = totalAssetsValue;
+        this.totalLiabilitiesValue = totalLiabilitiesValue;
+        this.netGap = netGap;
+        this.calculationDate = calculationDate;
+        this.gapType = gapType;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 
     public UUID getGapID() {
         return gapID;
     }
 
-    public void setGapID(UUID gapID) {
-        this.gapID = gapID;
-    }
-
     public UUID getBucketID() {
         return bucketID;
-    }
-
-    public void setBucketID(UUID bucketID) {
-        this.bucketID = bucketID;
     }
 
     public float getTotalAssetsValue() {
@@ -66,6 +75,18 @@ public class BucketGap {
 
     public void setGapType(String gapType) {
         this.gapType = gapType;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
 

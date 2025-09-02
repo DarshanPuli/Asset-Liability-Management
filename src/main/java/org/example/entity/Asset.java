@@ -1,6 +1,7 @@
 package org.example.entity;
 import org.example.enums.RateType;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 public class Asset {
@@ -13,10 +14,12 @@ public class Asset {
     private Optional<Date> repricingDate;
     private Currency currency;
     private String maturityBucketId;
-    private Date lastUpdated;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId, Date lastUpdated) {
+    public Asset(String assetType, double principalAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
         this.principalAmount = principalAmount;
@@ -26,7 +29,8 @@ public class Asset {
         this.repricingDate = repricingDate;
         this.currency = currency;
         this.maturityBucketId = maturityBucketId;
-        this.lastUpdated = lastUpdated;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
 
@@ -102,11 +106,15 @@ public class Asset {
         this.maturityBucketId = maturityBucketId;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

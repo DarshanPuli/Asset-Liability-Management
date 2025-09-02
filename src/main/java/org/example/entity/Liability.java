@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import org.example.enums.RateType;
@@ -27,7 +28,9 @@ public class Liability {
     private Currency currency;
     private String counterPartyId;
     private String maturityBucketId;
-    private Date lastUpdated;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
     private int count = 0;
 
     public String getCounterPartyId() {
@@ -38,7 +41,7 @@ public class Liability {
         this.counterPartyId = counterPartyId;
     }
 
-    public Liability(String liabilityType, double principleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency,String counterPartyId ,String maturityBucketId, Date lastUpdated) {
+    public Liability(String liabilityType, double principleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency,String counterPartyId ,String maturityBucketId) {
         this.liabilityId = UUID.randomUUID();
         this.liabilityType = liabilityType;
         this.principleAmount = principleAmount;
@@ -49,7 +52,8 @@ public class Liability {
         this.currency = currency;
         this.counterPartyId= counterPartyId;
         this.maturityBucketId = maturityBucketId;
-        this.lastUpdated = lastUpdated;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
 
         //addLiabilitytoDB(this);
     }
@@ -82,7 +86,6 @@ public class Liability {
     public UUID getLiabilityId() {
         return liabilityId;
     }
-
 
     public String getLiabilityType() {
         return liabilityType;
@@ -148,11 +151,15 @@ public class Liability {
         this.maturityBucketId = maturityBucketId;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
