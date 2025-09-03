@@ -25,10 +25,9 @@ public class TableSchemas {
             CREATE TABLE Asset (
                  Asset_ID VARCHAR2(36) PRIMARY KEY,
                  Asset_Type VARCHAR2(50) NOT NULL,
-                 Principal_Amount NUMBER(15,2) CHECK (Principal_Amount >= 0),
                  Interest_Rate NUMBER(5,2) CHECK (Interest_Rate BETWEEN 0 AND 100),
                  Rate_Type VARCHAR2(20),
-                 Maturity_Date DATE NOT NULL,
+                 Months_To_Expiry NUMBER NOT NULL,
                  Repricing_Date DATE,
                  CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                  UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP

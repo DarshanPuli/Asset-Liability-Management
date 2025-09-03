@@ -7,7 +7,6 @@ import java.util.*;
 public class Asset {
     private final UUID assetId;
     private String assetType;
-    private double principalAmount;
     private double interestRate;
     private String rateType;
     private int monthsToExpiry;
@@ -17,10 +16,9 @@ public class Asset {
 
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, String rateType, int monthsToExpiry, LocalDate repricingDate, Currency currency) {
+    public Asset(String assetType, double interestRate, String rateType, int monthsToExpiry, LocalDate repricingDate) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
-        this.principalAmount = principalAmount;
         this.interestRate = interestRate;
         this.rateType = rateType;
         this.monthsToExpiry = monthsToExpiry;
@@ -45,14 +43,6 @@ public class Asset {
 
     public void setAssetType(String assetType) {
         this.assetType = assetType;
-    }
-
-    public double getPrincipalAmount() {
-        return principalAmount;
-    }
-
-    public void setPrincipalAmount(double principalAmount) {
-        this.principalAmount = principalAmount;
     }
 
     public double getInterestRate() {
