@@ -9,5 +9,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public interface MaturityBucketDao {
-    public MaturityBucket findMaturityBucket(int monthsLeftToMaturity) throws SQLException;
+    MaturityBucket findMaturityBucketByRange(int monthsLeftToMaturity) throws SQLException;
+    void updateMaturityBucket(MaturityBucket maturityBucket) throws SQLException;
+    void getMaturityBuckets() throws SQLException;
 }

@@ -17,8 +17,8 @@ import java.util.UUID;
 public class AssetDaoImplementation implements AssetDao {
 
     private final Connection connection = OracleDbConnection.getConnection();
-    private final String ADD_ASSET = "INSERT INTO assets (asset_id, asset_type, principal_amount, interest_rate, rate_type, maturity_date, repricing_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private final String GET_MATURTY_DATE = "SELECT maturity_date FROM assets WHERE asset_id = ?";
+    private final String ADD_ASSET = "INSERT INTO assets (asset_id, asset_type, principal_amount, interest_rate, rate_type, months_to_expiry, repricing_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String GET_MONTHS_TO_EXPIRY = "SELECT months_to_expiry FROM assets WHERE asset_id = ?";
     private final String GET_ASSET = "SELECT * FROM assets WHERE asset_id = ?";
 
     public AssetDaoImplementation() throws SQLException {
@@ -32,19 +32,19 @@ public class AssetDaoImplementation implements AssetDao {
         statement.setDouble(3, asset.getPrincipalAmount());
         statement.setDouble(4, asset.getInterestRate());
         statement.setString(5, asset.getRateType());
-        statement.setDate(6, java.sql.Date.valueOf(asset.getMaturityDate()));
+        statement.setInt(6, asset.getMonthsToExpiry());
         statement.setDate(7, java.sql.Date.valueOf(asset.getRepricingDate()));
         statement.execute();
     }
 
-    public LocalDate getMaturityDate(UUID assetId) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(GET_MATURTY_DATE);
+    public int getMonthsToExpiry(UUID assetId) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(GET_MONTHS_TO_EXPIRY);
         statement.setObject(1, assetId);
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next()){
-            return resultSet.getObject("maturity_date", LocalDate.class);
+            return resultSet.getInt("months_to_expiry");
         }
-        return null;
+        return 0;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AssetDaoImplementation implements AssetDao {
             asset.setPrincipalAmount(resultSet.getDouble("principal_amount"));
             asset.setInterestRate(resultSet.getDouble("interest_rate"));
             asset.setRateType(resultSet.getString("rate_type"));
-            asset.setMaturityDate(resultSet.getObject("maturity_date", LocalDate.class));
+            asset.setMonthsToExpiry(resultSet.getInt("months_to_expiry"));
             return asset;
         }
         return null;

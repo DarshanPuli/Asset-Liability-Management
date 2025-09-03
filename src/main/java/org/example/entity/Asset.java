@@ -10,20 +10,20 @@ public class Asset {
     private double principalAmount;
     private double interestRate;
     private String rateType;
-    private LocalDate maturityDate;
+    private int monthsToExpiry;
     private LocalDate repricingDate;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency) {
+    public Asset(String assetType, double principalAmount, double interestRate, String rateType, int monthsToExpiry, LocalDate repricingDate, Currency currency) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
         this.principalAmount = principalAmount;
         this.interestRate = interestRate;
         this.rateType = rateType;
-        this.maturityDate = maturityDate;
+        this.monthsToExpiry = monthsToExpiry;
         this.repricingDate = repricingDate;
     }
 
@@ -71,14 +71,6 @@ public class Asset {
         this.rateType = rateType;
     }
 
-    public LocalDate getMaturityDate() {
-        return maturityDate;
-    }
-
-    public void setMaturityDate(LocalDate maturityDate) {
-        this.maturityDate = maturityDate;
-    }
-
     public LocalDate getRepricingDate() {
         return repricingDate;
     }
@@ -93,5 +85,13 @@ public class Asset {
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setMonthsToExpiry(int monthsToExpiry) {
+        this.monthsToExpiry = monthsToExpiry;
+    }
+
+    public int getMonthsToExpiry() {
+        return monthsToExpiry;
     }
 }
