@@ -27,6 +27,7 @@ public class CounterPartyOperations {
         System.out.println("3. Edit CounterParty");
         System.out.println("4. Delete CounterParty");
         System.out.println("5. Back to Main Menu");
+        System.out.print("Enter your choice: ");
         int option = scanner.nextInt();
         scanner.nextLine();
         switch (option) {

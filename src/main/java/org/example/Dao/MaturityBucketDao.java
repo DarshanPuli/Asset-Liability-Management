@@ -12,4 +12,5 @@ public interface MaturityBucketDao {
     MaturityBucket findMaturityBucketByRange(int monthsLeftToMaturity) throws SQLException;
     void updateMaturityBucket(MaturityBucket maturityBucket) throws SQLException;
     void getMaturityBuckets() throws SQLException;
+    void deleteMaturityBucket(String UUID);
 }

@@ -27,7 +27,7 @@ public class TableSchemas {
                  Asset_Type VARCHAR2(50) NOT NULL,
                  Interest_Rate NUMBER(5,2) CHECK (Interest_Rate BETWEEN 0 AND 100),
                  Rate_Type VARCHAR2(20),
-                 Months_to_expiry NUMBER NOT NULL,
+                 Months_To_Expiry NUMBER NOT NULL,
                  Repricing_Date DATE,
                  CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                  UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
