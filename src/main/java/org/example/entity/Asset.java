@@ -84,4 +84,16 @@ public class Asset {
     public int getMonthsToExpiry() {
         return monthsToExpiry;
     }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

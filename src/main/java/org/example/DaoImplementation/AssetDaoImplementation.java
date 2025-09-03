@@ -67,6 +67,7 @@ public class AssetDaoImplementation implements AssetDao {
             asset.setInterestRate(resultSet.getDouble("interest_rate"));
             asset.setRateType(resultSet.getString("rate_type"));
             asset.setMonthsToExpiry(resultSet.getInt("months_to_expiry"));
+            asset.setCreatedAt(resultSet.getTimestamp("createdat"));
             return asset;
         }
         return null;
