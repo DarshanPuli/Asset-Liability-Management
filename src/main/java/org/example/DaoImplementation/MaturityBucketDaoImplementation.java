@@ -12,9 +12,9 @@ import java.util.UUID;
 public class MaturityBucketDaoImplementation implements MaturityBucketDao {
 
     private final Connection connection = OracleDbConnection.getConnection();
-    private static final String FIND_MATURITY_BUCKET_BY_RANGE = "select * from maturity_bucket where ?>=start_range and ?<=end_range";
-    private static final String UPDATE_MATURITY_BUCKET = "UPDATE maturity_bucket SET total_assets_value = ?, net_gap = ? WHERE bucket_id = ?";
-    private static final String GET_MATURITY_BUCKET = "select * from maturity_bucket";
+    private static final String FIND_MATURITY_BUCKET_BY_RANGE = "select * from MaturityBucket where ?>=start_range and ?<=end_range";
+    private static final String UPDATE_MATURITY_BUCKET = "UPDATE MaturityBucket SET total_assets_value = ?, net_gap = ? WHERE bucket_id = ?";
+    private static final String GET_MATURITY_BUCKET = "select * from MaturityBucket";
     private static final String ADD_MATURITY_BUCKET = "insert into MaturityBucket (bucket_ID,bucket_name,start_range,end_range,description) values (?,?,?,?,?)";
     public MaturityBucketDaoImplementation() throws SQLException {}
 
