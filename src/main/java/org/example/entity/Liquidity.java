@@ -7,6 +7,7 @@ import java.util.UUID;
 public class Liquidity {
 
     private UUID liquidityId;
+    private UUID bucketId;
     private Date assessmentDate;
     private double cashFlowNet;
     private double cashReserve;
@@ -15,7 +16,6 @@ public class Liquidity {
     private double quickRatio;
     private double totalLiquidAssets;
     private double totalShortTermLiabilities;
-    private UUID bucketId;
     private String scenarioId;
     private String description;
     private Timestamp createdAt;

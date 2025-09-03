@@ -5,13 +5,19 @@ public class TableSchemas {
     public static final String CREATE_COUNTERPARTY = """
             CREATE TABLE CounterParty (
                 CounterPartyID VARCHAR2(36) PRIMARY KEY,
+                AssetID VARCHAR2(36),
+                LiabilityID VARCHAR2(36),
                 Name VARCHAR2(100) NOT NULL,
-                Type VARCHAR2(50) NOT NULL,
+                Type VARCHAR2(50) NOT  NULL,
                 CreditRating VARCHAR2(20),
                 PhoneNumber NUMBER(15),
                 Country VARCHAR2(100),
                 CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                CONSTRAINT fk_counterparty_asset FOREIGN KEY (AssetID)
+                     REFERENCES Asset(AssetID) ON DELETE SET NULL,
+                CONSTRAINT fk_counterparty_liability FOREIGN KEY (LiabilityID)
+                     REFERENCES Liability(LiabilityID) ON DELETE SET NULL
             )
         """;
 
@@ -24,12 +30,9 @@ public class TableSchemas {
                  RateType VARCHAR2(20),
                  MaturityDate DATE NOT NULL,
                  RepricingDate DATE,
-                 MaturityBucketID VARCHAR2(36),
                  CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                 UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                 CONSTRAINT fk_asset_maturitybucket FOREIGN KEY (MaturityBucketID)
-                     REFERENCES MaturityBucket(BucketID) ON DELETE SET NULL
-             )
+                 UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
         """;
 
     public static final String CREATE_LIABILITY = """
@@ -41,15 +44,8 @@ public class TableSchemas {
                 RateType VARCHAR2(20),
                 MaturityDate DATE NOT NULL,
                 RepricingDate DATE,
-                Currency VARCHAR2(3) NOT NULL,
-                CounterPartyID VARCHAR2(36) NOT NULL,
-                MaturityBucketID VARCHAR2(36),
                 CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                CONSTRAINT fk_liability_counterparty FOREIGN KEY (CounterPartyID)
-                    REFERENCES CounterParty(CounterPartyID) ON DELETE CASCADE,
-                CONSTRAINT fk_liability_maturitybucket FOREIGN KEY (MaturityBucketID)
-                    REFERENCES MaturityBucket(BucketID) ON DELETE SET NULL
+                UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """;
 
