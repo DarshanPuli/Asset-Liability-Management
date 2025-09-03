@@ -20,6 +20,7 @@ public class MaturityBucketDaoImplementation implements MaturityBucketDao {
 
     public MaturityBucketDaoImplementation() throws SQLException {}
 
+
     public void addMaturityBucket(MaturityBucket maturityBucket) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(ADD_MATURITY_BUCKET);
         preparedStatement.setString(1, maturityBucket.getBucketID().toString());

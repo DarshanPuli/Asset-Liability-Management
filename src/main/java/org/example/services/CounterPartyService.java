@@ -32,7 +32,7 @@ public class CounterPartyService {
         int principalAmount = Integer.parseInt(sc.nextLine());
         CounterParty counterParty = new CounterParty(assetId,name,type,creditRating,number,country,principalAmount);
         counterPartyDaoImplementation.addCounterParty(counterParty);
-        //counterPartyDaoImplementation.addToMaturityBucket(counterParty);
+        counterPartyDaoImplementation.addToMaturityBucket(counterParty);
 
     }
 }
