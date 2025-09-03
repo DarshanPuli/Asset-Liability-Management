@@ -6,7 +6,7 @@ public class TableTriggers {
         BEFORE UPDATE ON CounterParty
         FOR EACH ROW
         BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
+            :NEW.Updated_At := CURRENT_TIMESTAMP;
         END;
         """;
 
@@ -15,7 +15,7 @@ public class TableTriggers {
         BEFORE UPDATE ON Asset
         FOR EACH ROW
         BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
+            :NEW.Updated_At := CURRENT_TIMESTAMP;
         END;
         """;
 
@@ -24,7 +24,7 @@ public class TableTriggers {
         BEFORE UPDATE ON Liability
         FOR EACH ROW
         BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
+            :NEW.Updated_At := CURRENT_TIMESTAMP;
         END;
         """;
 
@@ -33,7 +33,7 @@ public class TableTriggers {
         BEFORE UPDATE ON MaturityBucket
         FOR EACH ROW
         BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
+            :NEW.Updated_At := CURRENT_TIMESTAMP;
         END;
         """;
 
@@ -42,7 +42,7 @@ public class TableTriggers {
         BEFORE UPDATE ON Liquidity
         FOR EACH ROW
         BEGIN
-            :NEW.UpdatedAt := CURRENT_TIMESTAMP;
+            :NEW.Updated_At := CURRENT_TIMESTAMP;
         END;
         """;
 }

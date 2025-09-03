@@ -13,7 +13,7 @@ public class MaturityBucketDaoImplementation implements MaturityBucketDao {
 
     private final Connection connection = OracleDbConnection.getConnection();
     private static final String FIND_MATURITY_BUCKET_BY_RANGE = "select * from MaturityBucket where ?>=start_range and ?<=end_range";
-    private static final String UPDATE_MATURITY_BUCKET = "UPDATE MaturityBucket SET total_assets_value = ?, net_gap = ? WHERE bucket_id = ?";
+    private static final String UPDATE_MATURITY_BUCKET = "update MaturityBucket SET total_assets_value = ?, net_gap = ? WHERE bucket_id = ?";
     private static final String GET_MATURITY_BUCKET = "select * from MaturityBucket";
     private static final String ADD_MATURITY_BUCKET = "insert into MaturityBucket (bucket_ID,bucket_name,start_range,end_range,description) values (?,?,?,?,?)";
     private static final String DELETE_MATURITY_BUCKET = "delete from MaturityBucket where bucket_id = ?";

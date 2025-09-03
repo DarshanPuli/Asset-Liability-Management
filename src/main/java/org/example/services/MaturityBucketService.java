@@ -39,14 +39,14 @@ public class MaturityBucketService {
         double totalAssetsValue, netGap, totalLiabilitiesValue;
         String bucketId;
         System.out.println("Please enter the following Details");
+        System.out.print("Please enter the bucket id: ");
+        bucketId = scanner.nextLine();
         System.out.print("Please enter the Total Assets Value : ");
         totalAssetsValue = scanner.nextDouble();
         System.out.print("Please enter the Total Liabilities Value : ");
         totalLiabilitiesValue = scanner.nextDouble();
         System.out.print("Please enter the Net Gain Value : ");
         netGap = scanner.nextDouble();
-        System.out.print("Please enter the bucket id: ");
-        bucketId = scanner.nextLine();
 
         MaturityBucket maturityBucket = new MaturityBucket();
         maturityBucket.setTotalAssetsValue(totalAssetsValue);

@@ -27,7 +27,7 @@ public class DBSetup {
             TableCreator.createTableIfNotExists(conn, "COUNTERPARTY", TableSchemas.CREATE_COUNTERPARTY);
 
             // Create triggers
-//            TableCreator.createTriggerIfNotExists(conn, "update_maturitybucket_timestamp", TableTriggers.TRIGGER_MATURITY_BUCKET);
+            TableCreator.createTriggerIfNotExists(conn, "update_maturitybucket_timestamp", TableTriggers.TRIGGER_MATURITY_BUCKET);
             TableCreator.createTriggerIfNotExists(conn, "update_asset_timestamp", TableTriggers.TRIGGER_ASSET);
             TableCreator.createTriggerIfNotExists(conn, "update_liability_timestamp", TableTriggers.TRIGGER_LIABILITY);
             TableCreator.createTriggerIfNotExists(conn, "update_liquidity_timestamp", TableTriggers.TRIGGER_LIQUIDITY);
