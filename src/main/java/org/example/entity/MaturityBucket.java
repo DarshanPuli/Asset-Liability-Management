@@ -24,9 +24,9 @@ public class MaturityBucket {
         this.startRange = startRange;
         this.endRange = endRange;
         this.description = description;
-        this.totalAssetsValue = totalAssetsValue;
-        this.totalLiabilitiesValue = totalLiabilitiesValue;
-        this.netGap = netGap;
+        this.totalAssetsValue = 0.0;
+        this.totalLiabilitiesValue = 0.0;
+        this.netGap = 0.0;
     }
 
     public UUID getBucketID() {
@@ -99,6 +99,22 @@ public class MaturityBucket {
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "MaturityBucket{" +
+                "bucketID=" + bucketID +
+                ", bucketName='" + bucketName + '\'' +
+                ", startRange=" + startRange +
+                ", endRange=" + endRange +
+                ", description='" + description + '\'' +
+                ", totalAssetsValue=" + totalAssetsValue +
+                ", totalLiabilitiesValue=" + totalLiabilitiesValue +
+                ", netGap=" + netGap +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 }
 
