@@ -5,6 +5,7 @@ import org.example.entity.MaturityBucket;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class MaturityBucketService {
 
@@ -33,5 +34,52 @@ public class MaturityBucketService {
 
         mbdi.addMaturityBucket(bucket);
     }
+
+    public void updateMaturityBucket(Scanner scanner) throws SQLException {
+        double totalAssetsValue, netGap, totalLiabilitiesValue;
+        String bucketId;
+        System.out.println("Please enter the following Details");
+        System.out.print("Please enter the Total Assets Value : ");
+        totalAssetsValue = scanner.nextDouble();
+        System.out.print("Please enter the Total Liabilities Value : ");
+        totalLiabilitiesValue = scanner.nextDouble();
+        System.out.print("Please enter the Net Gain Value : ");
+        netGap = scanner.nextDouble();
+        System.out.print("Please enter the bucket id: ");
+        bucketId = scanner.nextLine();
+
+        MaturityBucket maturityBucket = new MaturityBucket();
+        maturityBucket.setTotalAssetsValue(totalAssetsValue);
+        maturityBucket.setTotalLiabilitiesValue(totalLiabilitiesValue);
+        maturityBucket.setNetGap(netGap);
+        maturityBucket.setBucketID(UUID.fromString(bucketId));
+
+        mbdi.updateMaturityBucket(maturityBucket);
+    }
+
+    public void getMaturityBucket(Scanner scanner) throws SQLException {
+        System.out.println("Below are the all Maturity Buckets");
+        mbdi.getMaturityBuckets();
+    }
+
+    public void findMaturityBucketByRange(Scanner scanner) throws SQLException {
+        int range;
+        System.out.println("Please enter the following Details");
+        System.out.println("Please Enter The Month Range");
+        range = scanner.nextInt();
+
+        MaturityBucket bucket = mbdi.findMaturityBucketByRange(range);
+
+        System.out.println(bucket);
+    }
+
+    public void deleteMaturityBucket(Scanner scanner) throws SQLException {
+        String uuid;
+        System.out.println("Please enter the Maturity Bucket ID");
+        uuid = scanner.nextLine();
+        mbdi.deleteMaturityBucket(uuid);
+    }
+
+
 
 }

@@ -10,6 +10,7 @@ public class LiabilityOperations {
         System.out.println("3. Edit Liability");
         System.out.println("4. Delete Liability");
         System.out.println("5. Back to Main Menu");
+        System.out.print("Enter your choice: ");
         int option = scanner.nextInt();
         scanner.nextLine();
         switch (option) {
