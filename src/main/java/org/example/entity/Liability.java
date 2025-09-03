@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.example.enums.RateType;
@@ -22,26 +23,15 @@ public class Liability {
     private String liabilityType;
     private double principleAmount;
     private double interestRate;
-    private RateType rateType;
+    private String rateType;
     private Date maturityDate;
-    private Optional<Date> repricingDate;
-    private Currency currency;
-    private String counterPartyId;
-    private String maturityBucketId;
+    private LocalDate repricingDate;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     private int count = 0;
 
-    public String getCounterPartyId() {
-        return counterPartyId;
-    }
-
-    public void setCounterPartyId(String counterPartyId) {
-        this.counterPartyId = counterPartyId;
-    }
-
-    public Liability(String liabilityType, double principleAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency,String counterPartyId ,String maturityBucketId) {
+    public Liability(String liabilityType, double principleAmount, double interestRate, String rateType, Date maturityDate, LocalDate repricingDate, Currency currency,UUID counterPartyId) {
         this.liabilityId = UUID.randomUUID();
         this.liabilityType = liabilityType;
         this.principleAmount = principleAmount;
@@ -49,31 +39,14 @@ public class Liability {
         this.rateType = rateType;
         this.maturityDate = maturityDate;
         this.repricingDate = repricingDate;
-        this.currency = currency;
-        this.counterPartyId= counterPartyId;
-        this.maturityBucketId = maturityBucketId;
-
-        //addLiabilitytoDB(this);
     }
-
-  //  public void addLiabilityToDB(Liability liability){
-  //      liabilityDBInstance.addLiability(liability);
-    //}
-
-//    public int updateCount(String liabilityId){
-//        int count = 0;
-//        Liability liability = liabilityDBInstance.getLiability(liabilityId);
-//        liability.count+=1;
-//        //update db
-//        return count;
-//    }
 
     public int updateCount(){
         this.count+=1;
         //update db
         return this.count;
     }
-    //add to maturity bucket
+
     public Liability addLiabilityToMaturityBucket(){
         //find maturity bucket corresponding to maturity date
         //String bucketId = MaturityBucket.find(maturityDate);
@@ -109,11 +82,11 @@ public class Liability {
         this.interestRate = interestRate;
     }
 
-    public RateType getRateType() {
+    public String getRateType() {
         return rateType;
     }
 
-    public void setRateType(RateType rateType) {
+    public void setRateType(String rateType) {
         this.rateType = rateType;
     }
 
@@ -125,28 +98,12 @@ public class Liability {
         this.maturityDate = maturityDate;
     }
 
-    public Optional<Date> getRepricingDate() {
+    public LocalDate getRepricingDate() {
         return repricingDate;
     }
 
-    public void setRepricingDate(Optional<Date> repricingDate) {
+    public void setRepricingDate(LocalDate repricingDate) {
         this.repricingDate = repricingDate;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
-
-    public String getMaturityBucketId() {
-        return maturityBucketId;
-    }
-
-    public void setMaturityBucketId(String maturityBucketId) {
-        this.maturityBucketId = maturityBucketId;
     }
 
     public Timestamp getCreatedAt() {

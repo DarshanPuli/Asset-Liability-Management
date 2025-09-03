@@ -9,6 +9,7 @@ public class CounterParty {
 
     private final UUID counterPartyId;
     private final UUID assetId;
+    private final UUID liabilityId;
     private String name;
     private String type;
     private CreditRating creditRating;
@@ -17,9 +18,10 @@ public class CounterParty {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public CounterParty(UUID assetId, String name, String type, CreditRating creditRating, long phoneNumber, String country) {
+    public CounterParty(UUID assetId, UUID liabilityId, String name, String type, CreditRating creditRating, long phoneNumber, String country) {
         this.counterPartyId = UUID.randomUUID();
         this.assetId = assetId;
+        this.liabilityId = liabilityId;
         this.name = name;
         this.type = type;
         this.creditRating = creditRating;

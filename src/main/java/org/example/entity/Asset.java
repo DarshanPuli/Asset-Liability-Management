@@ -1,5 +1,4 @@
 package org.example.entity;
-import org.example.enums.RateType;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -13,13 +12,12 @@ public class Asset {
     private String rateType;
     private LocalDate maturityDate;
     private LocalDate repricingDate;
-    private UUID maturityBucketId;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency, UUID maturityBucketId) {
+    public Asset(String assetType, double principalAmount, double interestRate, String rateType, LocalDate maturityDate, LocalDate repricingDate, Currency currency) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
         this.principalAmount = principalAmount;
@@ -27,14 +25,11 @@ public class Asset {
         this.rateType = rateType;
         this.maturityDate = maturityDate;
         this.repricingDate = repricingDate;
-        // check the below one
-        this.maturityBucketId = maturityBucketId;
     }
 
     public Asset() {
         this.assetId = UUID.randomUUID();
     }
-
 
     public void helloWorld(){
         System.out.println("Hello World");
@@ -90,10 +85,6 @@ public class Asset {
 
     public void setRepricingDate(LocalDate repricingDate) {
         this.repricingDate = repricingDate;
-    }
-
-    public UUID getMaturityBucketId() {
-        return maturityBucketId;
     }
 
     public Timestamp getCreatedAt() {
