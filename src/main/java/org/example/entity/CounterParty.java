@@ -8,6 +8,7 @@ import java.util.UUID;
 public class CounterParty {
 
     private final UUID counterPartyId;
+    private double principalAmount;
     private final UUID assetId;
     private final UUID liabilityId;
     private String name;
@@ -18,7 +19,7 @@ public class CounterParty {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public CounterParty(UUID assetId, UUID liabilityId, String name, String type, CreditRating creditRating, long phoneNumber, String country) {
+    public CounterParty(UUID assetId, UUID liabilityId, String name, String type, CreditRating creditRating, long phoneNumber, String country,double principalAmount) {
         this.counterPartyId = UUID.randomUUID();
         this.assetId = assetId;
         this.liabilityId = liabilityId;
@@ -27,6 +28,7 @@ public class CounterParty {
         this.creditRating = creditRating;
         this.phoneNumber = phoneNumber;
         this.country = country;
+        this.principalAmount = principalAmount;
     }
 
     public UUID getCounterPartyId() {
@@ -85,4 +87,10 @@ public class CounterParty {
         return updatedAt;
     }
 
+    public double getPrincipalAmount() {
+        return this.principalAmount;
+    }
+    public void setPrincipalAmount(double principalAmount) {
+        this.principalAmount = principalAmount;
+    }
 }
