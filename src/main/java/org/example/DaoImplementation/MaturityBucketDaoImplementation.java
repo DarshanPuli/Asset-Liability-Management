@@ -12,7 +12,7 @@ import java.util.UUID;
 public class MaturityBucketDaoImplementation implements MaturityBucketDao {
 
     private final Connection connection = OracleDbConnection.getConnection();
-    private static final String FIND_MATURITY_BUCKET_BY_RANGE = "select * from MaturityBucket where ?>=start_range and ?<=end_range";
+    private static final String FIND_MATURITY_BUCKET_BY_RANGE = "select * from MaturityBucket where start_range<=? and end_range>=?";
     private static final String UPDATE_MATURITY_BUCKET = "UPDATE MaturityBucket SET total_assets_value = ?, net_gap = ? WHERE bucket_id = ?";
     private static final String GET_MATURITY_BUCKET = "select * from MaturityBucket";
     private static final String ADD_MATURITY_BUCKET = "insert into MaturityBucket (bucket_ID,bucket_name,start_range,end_range,description) values (?,?,?,?,?)";
@@ -46,9 +46,10 @@ public class MaturityBucketDaoImplementation implements MaturityBucketDao {
             preparedStatement.setInt(2, monthsLeftToMaturity);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllll");
                 MaturityBucket maturityBucket = new MaturityBucket();
-                maturityBucket.setBucketID(resultSet.getObject("BUCKET_ID", UUID.class));
-                maturityBucket.setBucketName(resultSet.getString("BUCKET_NAME"));
+//                maturityBucket.setBucketID(resultSet.getObject("BUCKET_ID", UUID.class));
+//                maturityBucket.setBucketName(resultSet.getString("BUCKET_NAME"));
                 maturityBucket.setTotalAssetsValue(resultSet.getInt("TOTAL_ASSETS_VALUE"));
                 maturityBucket.setTotalLiabilitiesValue(resultSet.getInt("TOTAL_LIABILITIES_VALUE"));
                 maturityBucket.setNetGap(resultSet.getInt("NET_GAP"));

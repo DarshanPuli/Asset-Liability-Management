@@ -50,11 +50,13 @@ public class CounterPartyDaoImplementation implements CounterPartyDao {
         int monthsToExpiry = asset.getMonthsToExpiry();
 
         LocalDate maturityDate = asset.getCreatedAt().toLocalDateTime().toLocalDate().plusMonths(monthsToExpiry);
+        System.out.println("Maturity Date: " + maturityDate.toString());
 
         //convert to months
-        Period period = Period.between(maturityDate, LocalDate.now());
+        Period period = Period.between(LocalDate.now(),maturityDate);
+        System.out.println(period.getYears()+" "+period.getMonths());
         int monthsLeftToMaturity = period.getYears() * 12 + period.getMonths();
-
+        System.out.println(monthsLeftToMaturity);
         //get maturity bucket
         MaturityBucket bucket = maturityBucketDaoImplementation.findMaturityBucketByRange(monthsLeftToMaturity);
 
