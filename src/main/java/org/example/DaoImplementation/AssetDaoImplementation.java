@@ -19,7 +19,7 @@ public class AssetDaoImplementation implements AssetDao {
     private final Connection connection = OracleDbConnection.getConnection();
     private final String ADD_ASSET = "INSERT INTO asset (asset_id, asset_type, interest_rate, rate_type, months_to_expiry, repricing_date) VALUES (?, ?, ?, ?, ?, ?)";
     private final String GET_MONTHS_TO_EXPIRY = "SELECT months_to_expiry FROM assets WHERE asset_id = ?";
-    private final String GET_ASSET = "SELECT * FROM assets WHERE asset_id = ?";
+    private final String GET_ASSET = "SELECT * FROM asset WHERE asset_id = ?";
 
     public AssetDaoImplementation() throws SQLException {
     }
@@ -38,7 +38,7 @@ public class AssetDaoImplementation implements AssetDao {
 
     public int getMonthsToExpiry(UUID assetId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(GET_MONTHS_TO_EXPIRY);
-        statement.setObject(1, assetId);
+        statement.setString(1, assetId.toString());
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next()){
             return resultSet.getInt("months_to_expiry");
@@ -60,7 +60,7 @@ public class AssetDaoImplementation implements AssetDao {
     public Asset getAsset(UUID assetId) throws SQLException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(GET_ASSET);
-        preparedStatement.setObject(1, assetId);
+        preparedStatement.setString(1, assetId.toString());
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
             Asset asset = new Asset();
