@@ -1,4 +1,5 @@
 package org.example.entity;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -9,10 +10,24 @@ public class MaturityBucket {
     private int startRange;
     private int endRange;
     private String description;
-    private Timestamp creationDate;
-    private Timestamp lastUpdated;
+    private double totalAssetsValue;
+    private double totalLiabilitiesValue;
+    private double netGap;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    // Getters and Setters
+    public MaturityBucket() {}
+
+    public MaturityBucket(String bucketName, int startRange, int endRange, String description) {
+        this.bucketID = UUID.randomUUID();
+        this.bucketName = bucketName;
+        this.startRange = startRange;
+        this.endRange = endRange;
+        this.description = description;
+        this.totalAssetsValue = 0.0;
+        this.totalLiabilitiesValue = 0.0;
+        this.netGap = 0.0;
+    }
 
     public UUID getBucketID() {
         return bucketID;
@@ -54,20 +69,60 @@ public class MaturityBucket {
         this.description = description;
     }
 
-    public Timestamp getCreationDate() {
-        return creationDate;
+    public double getTotalAssetsValue() {
+        return totalAssetsValue;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
-        this.creationDate = creationDate;
+    public void setTotalAssetsValue(double totalAssetsValue) {
+        this.totalAssetsValue = totalAssetsValue;
     }
 
-    public Timestamp getLastUpdated() {
-        return lastUpdated;
+    public double getTotalLiabilitiesValue() {
+        return totalLiabilitiesValue;
     }
 
-    public void setLastUpdated(Timestamp lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setTotalLiabilitiesValue(double totalLiabilitiesValue) {
+        this.totalLiabilitiesValue = totalLiabilitiesValue;
+    }
+
+    public double getNetGap() {
+        return netGap;
+    }
+
+    public void setNetGap(double netGap) {
+        this.netGap = netGap;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "MaturityBucket{" +
+                "bucketID=" + bucketID +
+                ", bucketName='" + bucketName + '\'' +
+                ", startRange=" + startRange +
+                ", endRange=" + endRange +
+                ", description='" + description + '\'' +
+                ", totalAssetsValue=" + totalAssetsValue +
+                ", totalLiabilitiesValue=" + totalLiabilitiesValue +
+                ", netGap=" + netGap +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 }
 

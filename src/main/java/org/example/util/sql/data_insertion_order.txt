@@ -1,0 +1,5 @@
+Data Insertion Order
+
+1. Maturity Bucket / Asset / Liability
+2. Liquidity
+3. CounterParty

@@ -1,69 +1,36 @@
 package org.example.entity;
 
-import org.example.db.AssetDB;
-import org.example.enums.CreditRating;
-import org.example.enums.RateType;
-
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.*;
 
-//add count param -> update count everytime an asset is created
-//remove creditRating
-//remove counterPartyId
-//add assedId to counterParty
-
 public class Asset {
-    private static AssetDB assetDBInstance = AssetDB.getInstance();
     private final UUID assetId;
     private String assetType;
-    private double principalAmount;
     private double interestRate;
-    private RateType rateType;
-    private Date maturityDate;
-    private Optional<Date> repricingDate;
-    private Currency currency;
-    private String maturityBucketId;
-    private Date lastUpdated;
+    private String rateType;
+    private int monthsToExpiry;
+    private LocalDate repricingDate;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
     private int count = 0;
 
-    public Asset(String assetType, double principalAmount, double interestRate, RateType rateType, Date maturityDate, Optional<Date> repricingDate, Currency currency, String maturityBucketId, Date lastUpdated) {
+    public Asset(String assetType, double interestRate, String rateType, int monthsToExpiry, LocalDate repricingDate) {
         this.assetId = UUID.randomUUID();
         this.assetType = assetType;
-        this.principalAmount = principalAmount;
         this.interestRate = interestRate;
         this.rateType = rateType;
-        this.maturityDate = maturityDate;
+        this.monthsToExpiry = monthsToExpiry;
         this.repricingDate = repricingDate;
-        this.currency = currency;
-        this.maturityBucketId = maturityBucketId;
-        this.lastUpdated = lastUpdated;
-
-        addAssetToDB(this);
     }
 
-    public void addAssetToDB(Asset asset){
-        assetDBInstance.addAsset(asset);
+    public Asset() {
+        this.assetId = UUID.randomUUID();
     }
 
-//    public int updateCount(String assetId){
-//        int count = 0;
-//        Asset asset = assetDBInstance.getAsset(assetId);
-//        asset.count+=1;
-//        //update db
-//        return count;
-//    }
-
-    public int updateCount(){
-        this.count+=1;
-        //update db
-        return this.count;
-    }
-
-    //add to maturity bucket
-    public Asset addAssetToMaturityBucket(){
-        //find maturity bucket corresponding to maturity date
-        //String bucketId = MaturityBucket.find(maturityDate);
-        //this.maturityBucketId = bucketId;
-        return this;
+    public void helloWorld(){
+        System.out.println("Hello World");
     }
 
     public UUID getAssetId() {
@@ -78,14 +45,6 @@ public class Asset {
         this.assetType = assetType;
     }
 
-    public double getprincipalAmount() {
-        return principalAmount;
-    }
-
-    public void setprincipalAmount(double principalAmount) {
-        this.principalAmount = principalAmount;
-    }
-
     public double getInterestRate() {
         return interestRate;
     }
@@ -94,51 +53,47 @@ public class Asset {
         this.interestRate = interestRate;
     }
 
-    public RateType getRateType() {
+    public String getRateType() {
         return rateType;
     }
 
-    public void setRateType(RateType rateType) {
+    public void setRateType(String rateType) {
         this.rateType = rateType;
     }
 
-    public Date getMaturityDate() {
-        return maturityDate;
-    }
-
-    public void setMaturityDate(Date maturityDate) {
-        this.maturityDate = maturityDate;
-    }
-
-    public Optional<Date> getRepricingDate() {
+    public LocalDate getRepricingDate() {
         return repricingDate;
     }
 
-    public void setRepricingDate(Optional<Date> repricingDate) {
+    public void setRepricingDate(LocalDate repricingDate) {
         this.repricingDate = repricingDate;
     }
 
-    public Currency getCurrency() {
-        return currency;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
     }
 
-    public String getMaturityBucketId() {
-        return maturityBucketId;
+    public void setMonthsToExpiry(int monthsToExpiry) {
+        this.monthsToExpiry = monthsToExpiry;
     }
 
-    public void setMaturityBucketId(String maturityBucketId) {
-        this.maturityBucketId = maturityBucketId;
+    public int getMonthsToExpiry() {
+        return monthsToExpiry;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

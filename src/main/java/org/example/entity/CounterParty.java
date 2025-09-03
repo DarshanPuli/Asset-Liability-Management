@@ -1,49 +1,36 @@
 package org.example.entity;
 
-import org.example.db.AssetDB;
-import org.example.db.CounterPartyDB;
-import org.example.enums.CreditRating;
-
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class CounterParty {
 
-    private final CounterPartyDB counterPartyDBInstance = CounterPartyDB.getInstance();
-
     private final UUID counterPartyId;
+    private double principalAmount;
     private final UUID assetId;
+    private final UUID liabilityId = null;
     private String name;
     private String type;
-    private CreditRating creditRating;
-    private long phoneNumber;
+    private String creditRating;
+    private String phoneNumber;
     private String country;
-    private Date creationDate;
-    private Date lastUpdated;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public CounterParty(UUID assetId, String name, String type, CreditRating creditRating, long phoneNumber, String country, Date creationDate, Date lastUpdated) {
+    public CounterParty(UUID assetId, String name, String type, String creditRating, String phoneNumber, String country, double principalAmount) {
         this.counterPartyId = UUID.randomUUID();
         this.assetId = assetId;
+//        this.liabilityId = liabilityId;
         this.name = name;
         this.type = type;
         this.creditRating = creditRating;
         this.phoneNumber = phoneNumber;
         this.country = country;
-        this.creationDate = creationDate;
-        this.lastUpdated = lastUpdated;
-
-        addCounterPartyToDB(this);
-        updateCount(this.assetId);
+        this.principalAmount = principalAmount;
     }
 
-    public void addCounterPartyToDB(CounterParty counterParty){
-        counterPartyDBInstance.addCounterParty(counterParty);
-    }
-
-    public int updateCount(UUID assetId){
-        AssetDB assetDB = AssetDB.getInstance();
-        Asset asset = assetDB.getAsset(assetId);
-        return asset.updateCount();
+    public UUID getLiabilityId() {
+        return liabilityId;
     }
 
     public UUID getCounterPartyId() {
@@ -70,19 +57,19 @@ public class CounterParty {
         this.type = type;
     }
 
-    public CreditRating getCreditRating() {
+    public String getCreditRating() {
         return creditRating;
     }
 
-    public void setCreditRating(CreditRating creditRating) {
+    public void setCreditRating(String creditRating) {
         this.creditRating = creditRating;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -94,19 +81,18 @@ public class CounterParty {
         this.country = country;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public double getPrincipalAmount() {
+        return this.principalAmount;
     }
-
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setPrincipalAmount(double principalAmount) {
+        this.principalAmount = principalAmount;
     }
 }
