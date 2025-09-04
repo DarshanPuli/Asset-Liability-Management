@@ -32,4 +32,11 @@ public class AssetService {
         Asset asset = new Asset(assetName,interestRate,rateType,repricingDate,quality);
         assetDaoimpl.addAsset(asset);
     }
+
+
+    public void getAllAssetsById(Scanner sc) throws SQLException {
+        System.out.println("Enter Asset Id: ");
+        String assetId = sc.nextLine();
+        assetDaoimpl.getAllAssetsByAssetId(assetId);
+    }
 }
