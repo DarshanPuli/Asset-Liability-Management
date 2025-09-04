@@ -6,8 +6,8 @@ public class MenuPrinter {
         System.out.println("Please select the option:");
         System.out.println("1. Asset Operations");
         System.out.println("2. Liability Operations");
-        System.out.println("3. Counterparty Operations");
-        System.out.println("4. Define / View Maturity Buckets");
+        System.out.println("3. User Operations");
+        System.out.println("4. Maturity Buckets Operations");
         System.out.println("5. Run Risk Analysis");
         System.out.println("6. Run Scenario Simulations");
         System.out.println("7. View Liquidity Position");
