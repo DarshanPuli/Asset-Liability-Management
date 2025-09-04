@@ -16,6 +16,7 @@ public class LiabilityDaoImpl implements LiabilityDao {
     public LiabilityDaoImpl() throws SQLException {
     }
 
+
     @Override
     public void addLiability(Liability liability) throws SQLException {
         try{

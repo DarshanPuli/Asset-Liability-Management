@@ -18,7 +18,6 @@ public class AssetsHeld {
 
     public AssetsHeld(){
         this.createdAt = LocalDate.now();
-        this.amountLeftToRepay = 0;
         this.possibilityOfDefault = 0;
     }
     public AssetsHeld(UUID userId,UUID assetId,long principalAmount,LocalDate maturityDate) {
@@ -27,5 +26,6 @@ public class AssetsHeld {
         this.assetId = assetId;
         this.principalAmount = principalAmount;
         this.maturityDate = maturityDate;
+        this.amountLeftToRepay = principalAmount;
     }
 }

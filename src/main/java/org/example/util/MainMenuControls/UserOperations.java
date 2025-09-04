@@ -6,7 +6,16 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class UserOperations {
-    private static final UserService userService = new UserService();
+    private static UserService userService;
+
+    static {
+        try {
+            userService = new UserService();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void manageUsers(Scanner scanner) throws SQLException {
         System.out.println("--- User Operations ---");
         System.out.println("1. Add User");

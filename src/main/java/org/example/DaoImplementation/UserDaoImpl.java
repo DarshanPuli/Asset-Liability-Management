@@ -12,10 +12,17 @@ import java.sql.SQLException;
 public class UserDaoImpl implements UserDao {
 
     Connection connection = OracleDbConnection.getConnection();
+
+    public MaturityBucketDaoImpl maturityBucketDaoImpl = new MaturityBucketDaoImpl();
+
+
+
     public static final String ADD_USER = "insert into USERS (user_id,name,phone_number,credit_rating) values (?,?,?,?)";
     public static final String PURCHASE_ASSET = "insert into ASSETSHELD (user_id,asset_id,principal_amount,maturity_date,amount_left_to_repay,possibility_of_default,created_at) values (?,?,?,?,?,?,?)";
+
     public UserDaoImpl() throws SQLException {
     }
+
 
     @Override
     public void addUser(User user) throws SQLException {
@@ -43,10 +50,13 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setLong(5,assetsHeld.getAmountLeftToRepay());
             preparedStatement.setInt(6,assetsHeld.getPossibilityOfDefault());
             preparedStatement.setObject(7,assetsHeld.getCreatedAt());
+            System.out.println(assetsHeld);
+            System.out.println("helloooooooooooooooooooooooooo");
             preparedStatement.executeUpdate();
             System.out.println("Asset purchased successfully");
+            maturityBucketDaoImpl.addAssetToMaturityBucket(assetsHeld);
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -14,11 +14,19 @@ public class OracleDbConnection {
     private static final String USERNAME = dotenv.get("DB_USERNAME");
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
+
+    private static Connection conn = null;
+
     public static Connection getConnection() throws SQLException {
-        Connection conn = null;
         try{
-            conn = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
-            System.out.println("Connected to database successfully.");
+            if(conn == null || conn.isClosed()) {
+                conn = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
+                System.out.println("AutoCommit mode: " + conn.getAutoCommit());
+
+                System.out.println("Connected to database successfully.");
+            }else{
+                return conn;
+            }
         }catch(SQLException e){
             System.out.println(e.getMessage());
             System.out.println("Connection Failed! Check output console");

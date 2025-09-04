@@ -12,14 +12,9 @@ import java.util.UUID;
 
 public class UserService {
 
-    private static final UserDaoImpl userDaoImpl;
+    private UserDaoImpl userDaoImpl = new UserDaoImpl();
 
-    static {
-        try {
-            userDaoImpl = new UserDaoImpl();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public UserService() throws SQLException {
     }
 
     public void addUser(Scanner sc) throws SQLException {
