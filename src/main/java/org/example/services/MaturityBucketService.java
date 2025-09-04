@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class MaturityBucketService {
 
     public MaturityBucketDaoImpl maturityBucketDaoImpl = new MaturityBucketDaoImpl();
-
     public MaturityBucketService() throws SQLException {}
 
     public void addMaturityBucket(Scanner scanner) throws SQLException {

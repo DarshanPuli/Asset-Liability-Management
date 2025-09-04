@@ -17,6 +17,7 @@ public class AssetDaoImpl implements AssetDao {
     public AssetDaoImpl() throws SQLException {
     }
 
+
     @Override
     public void addAsset(Asset asset) throws SQLException {
         try{
