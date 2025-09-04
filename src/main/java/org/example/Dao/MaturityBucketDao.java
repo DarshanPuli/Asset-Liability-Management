@@ -1,6 +1,8 @@
 package org.example.Dao;
 
 import org.example.connection.OracleDbConnection;
+import org.example.entity.AssetsHeld;
+import org.example.entity.LiabilitiesHeld;
 import org.example.entity.MaturityBucket;
 
 import java.sql.Connection;
@@ -10,4 +12,6 @@ import java.util.UUID;
 
 public interface MaturityBucketDao {
     public void addMaturityBucket(MaturityBucket maturityBucket) throws SQLException;
+    public void addAssetToMaturityBucket(AssetsHeld assetsHeld) throws SQLException;
+    public void addLiabilityToMaturityBucket(LiabilitiesHeld liabilitiesHeld) throws SQLException;
 }
