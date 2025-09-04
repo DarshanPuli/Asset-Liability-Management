@@ -2,6 +2,7 @@ package org.example.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,19 +11,19 @@ public class LiabilitiesHeld {
     private UUID userId;
     private UUID liabilityId;
     private long principalAmount;
-    private Date maturityDate;
+    private LocalDate maturityDate;
     private long amountLeftToRepay;
-    private Date createdAt;
+    private LocalDate createdAt;
 
     public LiabilitiesHeld(){
-        this.createdAt = new Date();
+        this.createdAt = LocalDate.now();
     }
-    public LiabilitiesHeld(UUID userId, UUID liabilityId, long principalAmount, Date maturityDate, long amountLeftToRepay) {
+    public LiabilitiesHeld(UUID userId, UUID liabilityId, long principalAmount, LocalDate maturityDate) {
         this();
         this.userId = userId;
         this.liabilityId = liabilityId;
         this.principalAmount = principalAmount;
         this.maturityDate = maturityDate;
-        this.amountLeftToRepay = amountLeftToRepay;
+        this.amountLeftToRepay = principalAmount;
     }
 }

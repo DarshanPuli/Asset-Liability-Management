@@ -3,6 +3,7 @@ package org.example.DaoImplementation;
 import org.example.Dao.UserDao;
 import org.example.connection.OracleDbConnection;
 import org.example.entity.AssetsHeld;
+import org.example.entity.LiabilitiesHeld;
 import org.example.entity.User;
 
 import java.sql.Connection;
@@ -19,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 
     public static final String ADD_USER = "insert into USERS (user_id,name,phone_number,credit_rating) values (?,?,?,?)";
     public static final String PURCHASE_ASSET = "insert into ASSETSHELD (user_id,asset_id,principal_amount,maturity_date,amount_left_to_repay,possibility_of_default,created_at) values (?,?,?,?,?,?,?)";
-
+    public static final String PURCHASE_LIABILITY = "insert into LIABILITIESHELD (user_id,liability_id,principal_amount,maturity_date,amount_left_to_repay,created_at) values (?,?,?,?,?,?)";
     public UserDaoImpl() throws SQLException {
     }
 
@@ -50,11 +51,25 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setLong(5,assetsHeld.getAmountLeftToRepay());
             preparedStatement.setInt(6,assetsHeld.getPossibilityOfDefault());
             preparedStatement.setObject(7,assetsHeld.getCreatedAt());
-            System.out.println(assetsHeld);
-            System.out.println("helloooooooooooooooooooooooooo");
             preparedStatement.executeUpdate();
             System.out.println("Asset purchased successfully");
             maturityBucketDaoImpl.addAssetToMaturityBucket(assetsHeld);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void purchaseLiability(LiabilitiesHeld liabilitiesHeld) throws SQLException {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(PURCHASE_LIABILITY);
+            preparedStatement.setString(1,liabilitiesHeld.getUserId().toString());
+            preparedStatement.setString(2,liabilitiesHeld.getLiabilityId().toString());
+            preparedStatement.setLong(3,liabilitiesHeld.getPrincipalAmount());
+            preparedStatement.setObject(4,liabilitiesHeld.getMaturityDate());
+            preparedStatement.setLong(5,liabilitiesHeld.getAmountLeftToRepay());
+            preparedStatement.setObject(6,liabilitiesHeld.getCreatedAt());
+            preparedStatement.executeUpdate();
+            System.out.println("Liability purchased successfully");
+            maturityBucketDaoImpl.addLiabilityToMaturityBucket(liabilitiesHeld);
         }catch(Exception e){
             e.printStackTrace();
         }

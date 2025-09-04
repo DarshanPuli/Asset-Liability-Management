@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.DaoImplementation.UserDaoImpl;
 import org.example.entity.AssetsHeld;
+import org.example.entity.LiabilitiesHeld;
 import org.example.entity.User;
 
 import java.sql.SQLException;
@@ -39,5 +40,18 @@ public class UserService {
         LocalDate maturityDate = LocalDate.parse(sc.next());
         AssetsHeld assetsHeld = new AssetsHeld(userId,assetId,principalAmount,maturityDate);
         userDaoImpl.purchaseAsset(assetsHeld);
+    }
+
+    public void purchaseLiability(Scanner sc) throws SQLException {
+        System.out.println("Enter userId : ");
+        UUID userId =  UUID.fromString(sc.next());
+        System.out.println("Enter Liability Id : ");
+        UUID liabilityId = UUID.fromString(sc.next());
+        System.out.println("Enter Principal Amount : ");
+        long principalAmount = sc.nextLong();
+        System.out.println("Enter Date of repayment");
+        LocalDate maturityDate = LocalDate.parse(sc.next());
+        LiabilitiesHeld liabilitiesHeld = new LiabilitiesHeld(userId,liabilityId,principalAmount,maturityDate);
+        userDaoImpl.purchaseLiability(liabilitiesHeld);
     }
 }
