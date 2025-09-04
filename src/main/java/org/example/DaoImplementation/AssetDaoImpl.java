@@ -3,17 +3,23 @@ package org.example.DaoImplementation;
 import org.example.Dao.AssetDao;
 import org.example.connection.OracleDbConnection;
 import org.example.entity.Asset;
+import org.example.entity.AssetsHeld;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class AssetDaoImpl implements AssetDao {
 
     private final Connection connection = OracleDbConnection.getConnection();
 
     private final String ADD_ASSET = "insert into ASSET (asset_id,asset_name,interest_rate,rate_type,repricing_date,quality) values (?,?,?,?,?,?)";
-
+    private final String GET_ASSETS_BY_ASSET_ID = "select * from ASSETSHELD where asset_id = ?";
     public AssetDaoImpl() throws SQLException {
     }
 
@@ -36,5 +42,26 @@ public class AssetDaoImpl implements AssetDao {
             System.out.println("Error adding asset");
         }
 
+    }
+
+    @Override
+    public List<AssetsHeld> getAllAssetsByAssetId(String assetId) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(GET_ASSETS_BY_ASSET_ID);
+        preparedStatement.setString(1, assetId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<AssetsHeld> assetsHeld = new ArrayList<>();
+        while(resultSet.next()){
+            AssetsHeld assetsHeldTemp = new AssetsHeld();
+            assetsHeldTemp.setAssetId(UUID.fromString(resultSet.getString("asset_id")));
+            assetsHeldTemp.setUserId(UUID.fromString(resultSet.getString("user_id")));
+            assetsHeldTemp.setMaturityDate(resultSet.getObject("maturity_date", LocalDate.class));
+            assetsHeldTemp.setPrincipalAmount(resultSet.getLong(("principal_amount")));
+            assetsHeldTemp.setAmountLeftToRepay(resultSet.getLong(("amount_left_to_repay")));
+            assetsHeldTemp.setPossibilityOfDefault(resultSet.getInt("possibility_of_default"));
+            assetsHeldTemp.setCreatedAt(resultSet.getObject("created_at", LocalDate.class));
+            assetsHeld.add(assetsHeldTemp);
+        }
+        System.out.println(assetsHeld);
+        return assetsHeld;
     }
 }
