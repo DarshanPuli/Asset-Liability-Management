@@ -20,6 +20,8 @@ public class AssetDaoImpl implements AssetDao {
 
     private final String ADD_ASSET = "insert into ASSET (asset_id,asset_name,interest_rate,rate_type,repricing_date,quality) values (?,?,?,?,?,?)";
     private final String GET_ASSETS_BY_ASSET_ID = "select * from ASSETSHELD where asset_id = ?";
+    private final String GET_ALL_ASSETS = "select * from ASSETSHELD";
+
     public AssetDaoImpl() throws SQLException {
     }
 
@@ -61,7 +63,20 @@ public class AssetDaoImpl implements AssetDao {
             assetsHeldTemp.setCreatedAt(resultSet.getObject("created_at", LocalDate.class));
             assetsHeld.add(assetsHeldTemp);
         }
-        System.out.println(assetsHeld);
         return assetsHeld;
+    }
+
+    @Override
+    public long getTotalAssetsValue() throws SQLException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ASSETS);
+        preparedStatement.execute();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        long totalAssetsValue = 0;
+        while(resultSet.next()){
+            long amountLeftToRepay = resultSet.getLong("amount_left_to_repay");
+            totalAssetsValue+=amountLeftToRepay;
+        }
+        return totalAssetsValue;
     }
 }

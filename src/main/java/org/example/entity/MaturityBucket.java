@@ -25,5 +25,14 @@ public class MaturityBucket {
         this.startRange = startRange;
         this.endRange = endRange;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Maturity Range: %d-%d months | Assets: ₹%,.2f | Liabilities: ₹%,.2f",
+                startRange, endRange, totalAssetsValue, totalLiabilitiesValue
+        );
+    }
+
 }
 

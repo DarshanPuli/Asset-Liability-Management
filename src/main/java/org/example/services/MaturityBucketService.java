@@ -4,6 +4,7 @@ import org.example.DaoImplementation.MaturityBucketDaoImpl;
 import org.example.entity.MaturityBucket;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class MaturityBucketService {
@@ -22,4 +23,10 @@ public class MaturityBucketService {
         maturityBucketDaoImpl.addMaturityBucket(bucket);
     }
 
+    public void viewMaturityBuckets() throws SQLException {
+        List<MaturityBucket> maturityBuckets = maturityBucketDaoImpl.getAllMaturityBuckets();
+        for(MaturityBucket maturityBucket : maturityBuckets){
+            System.out.println(maturityBucket);
+        }
+    }
 }

@@ -11,5 +11,5 @@ public interface AssetDao {
 
     public void addAsset(Asset asset) throws SQLException;
     public List<AssetsHeld> getAllAssetsByAssetId(String assetId) throws SQLException;
-
+    public long getTotalAssetsValue() throws SQLException;
 }

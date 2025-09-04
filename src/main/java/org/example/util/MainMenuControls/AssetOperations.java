@@ -24,12 +24,15 @@ public class AssetOperations {
         System.out.println("--- Asset Operations ---");
         System.out.println("1. Add Asset Product To bank");
         System.out.println("2. View All Assets By Id");
+        System.out.println("3. view total assets value");
         int option = scanner.nextInt();
         scanner.nextLine();
         switch (option) {
              case 1: assetService.addAsset(scanner);
                         break;
             case 2: assetService.getAllAssetsById(scanner);
+                        break;
+            case 3:assetService.getAllAssetsValue();
                         break;
             default:
                 System.out.println("Invalid choice!");

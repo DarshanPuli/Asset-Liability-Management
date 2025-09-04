@@ -31,9 +31,9 @@ public class App {
                 case 4:
                     MaturityBucketOperations.manageMaturityBuckets(sc);
                     break;
-//                case 5:
-//                    SystemOperations.runRiskAnalysis();
-//                    break;
+                case 5:
+                    SystemOperations.getPortfolioValue();
+                    break;
 //                case 6:
 //                    SystemOperations.runScenarioSimulation();
 //                    break;

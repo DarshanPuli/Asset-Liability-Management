@@ -28,4 +28,18 @@ public class AssetsHeld {
         this.maturityDate = maturityDate;
         this.amountLeftToRepay = principalAmount;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Principal: ₹%,d | Maturity Date: %s | Amount Left: ₹%,d | Default Possibility: %d%% | Created At: %s",
+                principalAmount,
+                maturityDate,
+                amountLeftToRepay,
+                possibilityOfDefault,
+                createdAt
+        );
+    }
+
+
 }
