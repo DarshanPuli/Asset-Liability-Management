@@ -19,10 +19,12 @@ public class MaturityBucketOperations {
     public static void manageMaturityBuckets(Scanner scanner) throws SQLException {
         System.out.println("--- MaturityBuckets Operations ---");
         System.out.println("1. Add MaturityBucket");
+        System.out.println("2. View  MaturityBuckets");
         int option = scanner.nextInt();
         scanner.nextLine();
         switch (option) {
              case 1: service.addMaturityBucket(scanner); break;
+             case 2: service.viewMaturityBuckets(); break;
             default:
                 System.out.println("Invalid choice!");
         }

@@ -2,9 +2,11 @@ package org.example.services;
 
 import org.example.DaoImplementation.AssetDaoImpl;
 import org.example.entity.Asset;
+import org.example.entity.AssetsHeld;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class AssetService {
@@ -37,6 +39,14 @@ public class AssetService {
     public void getAllAssetsById(Scanner sc) throws SQLException {
         System.out.println("Enter Asset Id: ");
         String assetId = sc.nextLine();
-        assetDaoimpl.getAllAssetsByAssetId(assetId);
+        List<AssetsHeld> assets = assetDaoimpl.getAllAssetsByAssetId(assetId);
+        for(AssetsHeld asset : assets){
+            System.out.println(asset);
+        }
+    }
+
+    public void getAllAssetsValue() throws SQLException {
+        long totalAssetsValue = assetDaoimpl.getTotalAssetsValue();
+        System.out.println("Total Assets Value: " + totalAssetsValue);
     }
 }

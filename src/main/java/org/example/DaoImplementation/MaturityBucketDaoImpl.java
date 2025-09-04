@@ -9,6 +9,8 @@ import org.example.entity.MaturityBucket;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class MaturityBucketDaoImpl implements MaturityBucketDao {
@@ -18,7 +20,7 @@ public class MaturityBucketDaoImpl implements MaturityBucketDao {
     private static final String ADD_MATURITY_BUCKET= "insert into MATURITYBUCKET (bucket_id,start_range,end_range,total_assets_value,total_liabilities_value) values (?,?,?,?,?)";
     private static final String GET_MATURITY_BUCKET= "select * from MATURITYBUCKET where start_range<=? and end_range>=?";
     private static final String UPDATE_MATURITY_BUCKET_BY_BUCKET_ID = "update MATURITYBUCKET set total_assets_value = ?,total_liabilities_value = ? where bucket_id = ? ";
-
+    private static final String GET_ALL_MATURITY_BUCKETS = "select * from MATURITYBUCKET";
     public MaturityBucketDaoImpl() throws SQLException {
     }
 
@@ -37,6 +39,23 @@ public class MaturityBucketDaoImpl implements MaturityBucketDao {
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public List<MaturityBucket> getAllMaturityBuckets() throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_MATURITY_BUCKETS);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<MaturityBucket> maturityBuckets = new ArrayList<>();
+        while(resultSet.next()){
+            MaturityBucket maturityBucket = new MaturityBucket();
+            maturityBucket.setBucketID(UUID.fromString(resultSet.getString("bucket_id")));
+            maturityBucket.setStartRange(resultSet.getInt("start_range"));
+            maturityBucket.setEndRange(resultSet.getInt("end_range"));
+            maturityBucket.setTotalAssetsValue(resultSet.getDouble("total_assets_value"));
+            maturityBucket.setTotalLiabilitiesValue(resultSet.getDouble("total_liabilities_value"));
+            maturityBuckets.add(maturityBucket);
+        }
+        return maturityBuckets;
     }
 
     public void addAssetToMaturityBucket(AssetsHeld assetsHeld) throws SQLException {

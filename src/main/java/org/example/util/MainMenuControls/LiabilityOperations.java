@@ -20,22 +20,20 @@ public class LiabilityOperations {
     public static void manageLiabilities(Scanner scanner) throws SQLException {
 
         System.out.println("--- Liability Operations ---");
-        System.out.println("1. Add Liability");
-        System.out.println("2. View Liability");
-        System.out.println("3. Edit Liability");
-        System.out.println("4. Delete Liability");
-        System.out.println("5. Back to Main Menu");
+        System.out.println("1. Add Liability product to bank");
+        System.out.println("2. View Liability by ID");
+        System.out.println("3. View total liabilities value");
         int option = scanner.nextInt();
         scanner.nextLine();
         switch (option) {
              case 1: liabilityService.addLiability(scanner); break;
-            // case 2: viewLiability(); break;
-            // case 3: editLiability(scanner); break;
-            // case 4: deleteLiability(scanner); break;
+             case 2: liabilityService.getAllLiabilitiesById(scanner); break;
+             case 3: liabilityService.getAllLiabilitiesValue(); break;
             case 5:
                 return;
             default:
                 System.out.println("Invalid choice!");
         }
     }
+
 }
