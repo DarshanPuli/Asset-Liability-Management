@@ -26,27 +26,27 @@ public class App {
                     LiabilityOperations.manageLiabilities(sc);
                     break;
                 case 3:
-                    CounterPartyOperations.manageCounterParties(sc);
+                    UserOperations.manageUsers(sc);
                     break;
                 case 4:
                     MaturityBucketOperations.manageMaturityBuckets(sc);
                     break;
                 case 5:
-                    SystemOperations.runRiskAnalysis();
+                    SystemOperations.getPortfolioValue();
                     break;
-                case 6:
-                    SystemOperations.runScenarioSimulation();
-                    break;
-                case 7:
-                    SystemOperations.viewLiquidityPosition();
-                    break;
-                case 8:
-                    SystemOperations.generateReports();
-                    break;
-                case 9:
-                    System.out.println("Exiting System! Bye!");
-                    running = false;
-                    break;
+//                case 6:
+//                    SystemOperations.runScenarioSimulation();
+//                    break;
+//                case 7:
+//                    SystemOperations.viewLiquidityPosition();
+//                    break;
+//                case 8:
+//                    SystemOperations.generateReports();
+//                    break;
+//                case 9:
+//                    System.out.println("Exiting System! Bye!");
+//                    running = false;
+//                    break;
                 default:
                     System.out.println("Invalid choice!");
             }

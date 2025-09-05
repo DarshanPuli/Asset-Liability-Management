@@ -1,8 +1,23 @@
 package org.example.util.MainMenuControls;
 
+import org.example.services.SystemService;
+
+import java.sql.SQLException;
+
 public class SystemOperations {
-    public static void runRiskAnalysis() {
-        System.out.println("Running Risk Analysis - Not yet implemented.");
+
+    public static final SystemService systemService;
+
+    static {
+        try {
+            systemService = new SystemService();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void getPortfolioValue() throws SQLException {
+        systemService.getPortfolioValue();
     }
 
     public static void runScenarioSimulation() {

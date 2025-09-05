@@ -1,104 +1,29 @@
 package org.example.entity;
+import lombok.Data;
+import lombok.Getter;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.UUID;
 
+@Data
 public class MaturityBucket {
-
     private UUID bucketID;
-    private String bucketName;
     private int startRange;
     private int endRange;
-    private String description;
     private double totalAssetsValue;
     private double totalLiabilitiesValue;
-    private double netGap;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
-    public MaturityBucket() {}
-
-    public MaturityBucket(String bucketName, int startRange, int endRange, String description) {
+    public MaturityBucket(){
         this.bucketID = UUID.randomUUID();
-        this.bucketName = bucketName;
+        this.totalAssetsValue = 0;
+        this.totalLiabilitiesValue = 0;
+    }
+
+    public MaturityBucket(int startRange, int endRange){
+        this();
         this.startRange = startRange;
         this.endRange = endRange;
-        this.description = description;
-        this.totalAssetsValue = 0.0;
-        this.totalLiabilitiesValue = 0.0;
-        this.netGap = 0.0;
-    }
-
-    public UUID getBucketID() {
-        return bucketID;
-    }
-
-    public void setBucketID(UUID bucketID) {
-        this.bucketID = bucketID;
-    }
-
-    public String getBucketName() {
-        return bucketName;
-    }
-
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
-    }
-
-    public int getStartRange() {
-        return startRange;
-    }
-
-    public void setStartRange(int startRange) {
-        this.startRange = startRange;
-    }
-
-    public int getEndRange() {
-        return endRange;
-    }
-
-    public void setEndRange(int endRange) {
-        this.endRange = endRange;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getTotalAssetsValue() {
-        return totalAssetsValue;
-    }
-
-    public void setTotalAssetsValue(double totalAssetsValue) {
-        this.totalAssetsValue = totalAssetsValue;
-    }
-
-    public double getTotalLiabilitiesValue() {
-        return totalLiabilitiesValue;
-    }
-
-    public void setTotalLiabilitiesValue(double totalLiabilitiesValue) {
-        this.totalLiabilitiesValue = totalLiabilitiesValue;
-    }
-
-    public double getNetGap() {
-        return netGap;
-    }
-
-    public void setNetGap(double netGap) {
-        this.netGap = netGap;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
     }
 
     public void setCreatedAt(Timestamp createdAt) {
@@ -111,18 +36,11 @@ public class MaturityBucket {
 
     @Override
     public String toString() {
-        return "MaturityBucket{" +
-                "bucketID=" + bucketID +
-                ", bucketName='" + bucketName + '\'' +
-                ", startRange=" + startRange +
-                ", endRange=" + endRange +
-                ", description='" + description + '\'' +
-                ", totalAssetsValue=" + totalAssetsValue +
-                ", totalLiabilitiesValue=" + totalLiabilitiesValue +
-                ", netGap=" + netGap +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return String.format(
+                "Maturity Range: %d-%d months | Assets: ₹%,.2f | Liabilities: ₹%,.2f",
+                startRange, endRange, totalAssetsValue, totalLiabilitiesValue
+        );
     }
+
 }
 
