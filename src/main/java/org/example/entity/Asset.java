@@ -28,4 +28,16 @@ public class Asset {
         this.repricingDate = repricingDate;
         this.quality = quality;
     }
+
+    @Override
+    public String toString() {
+        return "Asset{" +
+                "assetId=" + assetId +
+                ", assetName='" + assetName + '\'' +
+                ", interestRate=" + interestRate +
+                ", rateType='" + rateType + '\'' +
+                ", repricingDate=" + repricingDate +
+                ", quality='" + quality + '\'' +
+                '}';
+    }
 }

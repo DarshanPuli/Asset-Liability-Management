@@ -31,7 +31,7 @@ public class TableSchemas {
         Maturity_Date DATE NOT NULL,
         Amount_Left_To_Repay NUMBER(15,2) CHECK (Amount_Left_To_Repay >= 0),
         Possibility_Of_Default NUMBER(3) CHECK (Possibility_Of_Default BETWEEN 0 AND 100),
-        Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        Created_At DATE DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT pk_assetsheld PRIMARY KEY (User_ID, Asset_ID),
         CONSTRAINT fk_assetsheld_asset FOREIGN KEY (Asset_ID) REFERENCES Asset(Asset_ID) ON DELETE CASCADE,
         CONSTRAINT fk_assetsheld_user FOREIGN KEY (User_ID) REFERENCES Users(User_ID) ON DELETE CASCADE
@@ -58,7 +58,7 @@ public class TableSchemas {
         Principal_Amount NUMBER(15,2) CHECK (Principal_Amount >= 0),
         Maturity_Date DATE NOT NULL,
         Amount_Left_To_Repay NUMBER(15,2) CHECK (Amount_Left_To_Repay >= 0),
-        Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        Created_At DATE DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT pk_liabilitiesheld PRIMARY KEY (User_ID, Liability_ID),
         CONSTRAINT fk_liabilitiesheld_liability FOREIGN KEY (Liability_ID) REFERENCES Liability(Liability_ID) ON DELETE CASCADE,
         CONSTRAINT fk_liabilitiesheld_user FOREIGN KEY (User_ID) REFERENCES Users(User_ID) ON DELETE CASCADE
