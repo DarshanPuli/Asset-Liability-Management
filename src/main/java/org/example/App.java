@@ -1,5 +1,6 @@
 package org.example;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.example.util.DBSetup;
 import org.example.util.MainMenuControls.*;
 
@@ -7,6 +8,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class App {
+    public static final Dotenv dotenv = Dotenv.load();
+
     public static void main(String[] args) throws SQLException {
         Scanner sc = new Scanner(System.in);
         boolean running = true;
@@ -34,9 +37,9 @@ public class App {
                 case 5:
                     SystemOperations.getPortfolioValue();
                     break;
-//                case 6:
-//                    SystemOperations.runScenarioSimulation();
-//                    break;
+                case 6:
+                    SystemOperations.runScenarioSimulation();
+                    break;
 //                case 7:
 //                    SystemOperations.viewLiquidityPosition();
 //                    break;

@@ -1,5 +1,7 @@
 package org.example.util.MainMenuControls;
 
+import org.example.services.LiabilityService;
+import org.example.services.RiskService;
 import org.example.services.SystemService;
 
 import java.sql.SQLException;
@@ -7,8 +9,14 @@ import java.sql.SQLException;
 public class SystemOperations {
 
     public static final SystemService systemService;
+    public static final RiskService riskService;
 
     static {
+        try {
+            riskService = new RiskService();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         try {
             systemService = new SystemService();
         } catch (SQLException e) {
@@ -20,8 +28,10 @@ public class SystemOperations {
         systemService.getPortfolioValue();
     }
 
-    public static void runScenarioSimulation() {
-        System.out.println("Running Scenario Simulation - Not yet implemented.");
+    public static void runScenarioSimulation() throws SQLException {
+        int rate =  8;
+        System.out.println("if interest rate increases to "+rate+"% bond prices will be as follows : ");
+        riskService.longTermBondRisk(rate);
     }
 
     public static void viewLiquidityPosition() {

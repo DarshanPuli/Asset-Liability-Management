@@ -6,9 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static org.example.App.dotenv;
+
 public class OracleDbConnection {
 
-    private static final Dotenv dotenv = Dotenv.load();
 
     private static final String CONNECTION_STRING = dotenv.get("DB_URL");
     private static final String USERNAME = dotenv.get("DB_USERNAME");
