@@ -12,6 +12,7 @@ public class DBConnection {
 
     public static Connection getConnection() {
         Connection connection = null;
+
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection("jdbc:oracle:thin:@10.120.159.196:1521:free","system","root");
